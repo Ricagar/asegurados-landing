@@ -38,6 +38,9 @@
     .brand .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: .5px; color: var(--turquesa); }
     .brand .name { font-size: .95rem; opacity: .9; }
     .nav a.cta { background: #25d366; color: #fff; text-decoration: none; padding: 9px 18px; border-radius: 999px; font-weight: 700; font-size: .92rem; white-space: nowrap; }
+    .nav .acciones { display: flex; align-items: center; gap: 10px; }
+    .nav a.acceso { color: var(--white); text-decoration: none; padding: 8px 16px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.45); font-weight: 600; font-size: .88rem; white-space: nowrap; }
+    .nav a.acceso:hover { border-color: var(--turquesa); color: var(--turquesa); }
 
     .hero { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 70%); color: var(--white); padding: 72px 0 64px; }
     .hero h1 { font-size: clamp(1.9rem, 4.5vw, 3rem); line-height: 1.15; max-width: 640px; }
@@ -89,7 +92,10 @@
       <span class="logo">RG</span>
       <span class="name">Asegurados · Ricardo García, Corredor de Seguros</span>
     </div>
-    <a class="cta" href="https://wa.me/584128499103?text=Hola%2C%20quiero%20cotizar%20un%20seguro" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+    <div class="acciones">
+      <a class="cta" href="https://wa.me/584128499103?text=Hola%2C%20quiero%20cotizar%20un%20seguro" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+      <a class="acceso" href="https://app.aseguradosve.com" target="_blank" rel="noopener">Acceder 🔐</a>
+    </div>
   </div>
 </header>
 
