@@ -125,6 +125,136 @@
   </div>
 </section>
 
+<!-- ── Cotización web → n8n (Workflow 3 "Otros canales") ─────────────────────
+     El formulario manda un JSON canónico al webhook de n8n (pipeline
+     normalizar→dedup→Kommo ya construido y probado). Mientras ENDPOINT esté
+     vacío (falta exponer n8n por el Cloudflare Tunnel), el envío cae con
+     gracia a WhatsApp con el texto pre-armado — la landing nunca se rompe. -->
+<style>
+  .quote { background: #f0faf4; padding: 56px 0; }
+  .quote h2 { text-align: center; }
+  .quote .lead { text-align: center; }
+  .quote form { max-width: 560px; margin: 24px auto 0; display: grid; gap: 14px; }
+  .quote label { font-weight: 600; font-size: .92rem; display: grid; gap: 6px; }
+  .quote input, .quote select, .quote textarea {
+    padding: 11px 12px; border: 1px solid #cfe3d6; border-radius: 10px;
+    font: inherit; background: #fff; width: 100%; box-sizing: border-box;
+  }
+  .quote textarea { min-height: 84px; resize: vertical; }
+  .quote .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 560px) { .quote .dos { grid-template-columns: 1fr; } }
+  .quote button {
+    background: #25d366; color: #fff; border: 0; border-radius: 999px;
+    padding: 13px 24px; font-weight: 700; font-size: 1rem; cursor: pointer;
+  }
+  .quote button:disabled { opacity: .6; cursor: wait; }
+  .quote .msg { text-align: center; font-weight: 600; min-height: 1.4em; }
+  .quote .msg.ok { color: #157347; }
+  .quote .msg.err { color: #b02a37; }
+  .quote .hp { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+  .quote .privacidad { font-size: .8rem; color: #6b7f72; text-align: center; margin-top: 6px; }
+</style>
+<section class="quote" id="cotizar">
+  <div class="wrap">
+    <h2>Cotiza en línea</h2>
+    <p class="lead">Déjanos tus datos y te enviamos tu cotización sin compromiso.</p>
+    <form id="form-cotizar" novalidate>
+      <label>Nombre y apellido *
+        <input type="text" name="nombre" required maxlength="120" autocomplete="name" />
+      </label>
+      <div class="dos">
+        <label>WhatsApp / Teléfono
+          <input type="tel" name="telefono" maxlength="20" placeholder="0412-1234567" autocomplete="tel" />
+        </label>
+        <label>Correo
+          <input type="email" name="email" maxlength="120" autocomplete="email" />
+        </label>
+      </div>
+      <label>¿Qué quieres asegurar?
+        <select name="ramo">
+          <option value="">— Elige un ramo —</option>
+          <option>Salud (HCM)</option><option>Automóvil</option><option>Vida</option>
+          <option>Hogar</option><option>Funeraria</option><option>Fianzas</option>
+          <option>Embarcaciones</option><option>Asistencia en viaje</option><option>Otro</option>
+        </select>
+      </label>
+      <label>Cuéntanos brevemente
+        <textarea name="mensaje" maxlength="600" placeholder="Edad de los asegurados, suma deseada, o cualquier detalle"></textarea>
+      </label>
+      <!-- honeypot anti-bots: humano jamás lo ve ni lo llena -->
+      <label class="hp" aria-hidden="true">No llenar<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+      <button type="submit" id="btn-cotizar">Quiero mi cotización</button>
+      <p class="msg" id="msg-cotizar" role="status"></p>
+      <p class="privacidad">Tus datos solo se usan para preparar tu cotización. Sin spam.</p>
+    </form>
+  </div>
+</section>
+<script>
+(function () {
+  // Webhook del WF3 de n8n (Otros canales). VACÍO hasta exponer n8n por el
+  // Cloudflare Tunnel; p. ej.: 'https://n8n.aseguradosve.com/webhook/otros-canales-ingesta'
+  var ENDPOINT = '';
+
+  var form = document.getElementById('form-cotizar');
+  var btn = document.getElementById('btn-cotizar');
+  var msg = document.getElementById('msg-cotizar');
+  var WA = 'https://wa.me/584128499103';
+
+  function aviso(texto, clase) { msg.textContent = texto; msg.className = 'msg ' + (clase || ''); }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var d = new FormData(form);
+    if (d.get('website')) return; // honeypot: bot -> silencio
+    var nombre = (d.get('nombre') || '').trim();
+    var telefono = (d.get('telefono') || '').trim();
+    var email = (d.get('email') || '').trim();
+    var ramo = (d.get('ramo') || '').trim();
+    var mensaje = (d.get('mensaje') || '').trim();
+    if (!nombre) return aviso('Escribe tu nombre para poder atenderte.', 'err');
+    if (!telefono && !email) return aviso('Déjanos al menos un WhatsApp o un correo para responderte.', 'err');
+
+    var texto = (ramo ? ramo + '. ' : '') + mensaje;
+    var params = new URLSearchParams(location.search);
+    var payload = {
+      nombre: nombre, telefono: telefono || null, email: email || null,
+      mensaje: texto || null, canal: 'web',
+      utm_source: params.get('utm_source') || null,
+      utm_medium: params.get('utm_medium') || null,
+      utm_campaign: params.get('utm_campaign') || null
+    };
+
+    // Sin endpoint todavía -> caída con gracia a WhatsApp con el texto armado.
+    if (!ENDPOINT) {
+      var wtxt = 'Hola, soy ' + nombre + ' y quiero cotizar' + (ramo ? ' ' + ramo : ' un seguro') +
+        (mensaje ? '. ' + mensaje : '') + (email ? '. Mi correo: ' + email : '');
+      window.open(WA + '?text=' + encodeURIComponent(wtxt), '_blank', 'noopener');
+      aviso('Te llevamos a WhatsApp para completar tu cotización 👌', 'ok');
+      return;
+    }
+
+    btn.disabled = true; aviso('Enviando…');
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { s: r.status, j: j }; }); })
+      .then(function (res) {
+        if (res.s === 200 && res.j && res.j.ok !== false) {
+          form.reset();
+          aviso('¡Recibido! Te contactamos hoy mismo con tu cotización. 🎉', 'ok');
+        } else if (res.s === 400) {
+          aviso('Revisa tus datos e inténtalo de nuevo.', 'err');
+        } else {
+          aviso('No pudimos procesarlo ahora — escríbenos directo por WhatsApp y te atendemos ya.', 'err');
+        }
+      })
+      .catch(function () { aviso('Sin conexión — inténtalo de nuevo o escríbenos por WhatsApp.', 'err'); })
+      .then(function () { btn.disabled = false; });
+  });
+})();
+</script>
+
 <section class="contact" id="contacto">
   <div class="wrap">
     <h2>Contacto</h2>
