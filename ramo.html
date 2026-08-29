@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramos — Asegurados | Ricardo García, Corredor de Seguros</title>
+  <meta name="description" content="Coberturas, alcance y cotización de cada ramo: Auto, Salud (HCM), Vida, Hogar, Funeraria, Fianzas, Embarcaciones y Asistencia en viaje. Corredor Sudeaseg CAA-002008.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1E335D; --navy-2: #2A4680; --navy-deep: #16264a;
+      --turquesa: #0097B2; --naranja: #DD4E07; --ink: #22314f;
+      --muted: #737373; --bg: #f8f7f4; --white: #ffffff;
+      --line: #e6e2da; --wa: #25d366;
+      --sans: 'Manrope', system-ui, sans-serif; --serif: 'Instrument Serif', Georgia, serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--ink); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 22px; }
+    em.acc { font-family: var(--serif); font-style: italic; font-weight: 400; }
+
+    @keyframes fadeRise { from { opacity: 0; transform: translateY(18px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+    .fr { opacity: 0; animation: fadeRise .7s cubic-bezier(.16,1,.3,1) forwards; }
+    .fr.d1 { animation-delay: .12s; } .fr.d2 { animation-delay: .24s; } .fr.d3 { animation-delay: .36s; }
+    @media (prefers-reduced-motion: reduce) { .fr { animation: none !important; opacity: 1 !important; } }
+
+    header { position: sticky; top: 0; z-index: 50; background: rgba(248,247,244,.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; gap: 12px; }
+    .brand img { height: 48px; width: auto; display: block; }
+    .nav .der { display: flex; align-items: center; gap: 10px; }
+    .nav a.volver { color: var(--navy); text-decoration: none; font-weight: 700; font-size: .88rem; padding: 9px 16px; border-radius: 999px; border: 1.5px solid rgba(30,51,93,.18); }
+    .nav a.volver:hover { border-color: var(--navy); }
+    .nav a.wa-mini { background: var(--wa); color: #fff; text-decoration: none; padding: 10px 18px; border-radius: 999px; font-weight: 700; font-size: .87rem; white-space: nowrap; }
+
+    .cabecera { background: var(--navy); color: #fff; padding: 58px 0 54px; position: relative; overflow: hidden; }
+    .cabecera::before { content: ""; position: absolute; width: 700px; height: 700px; right: -260px; top: -320px; border-radius: 50%; background: radial-gradient(circle, rgba(0,151,178,.22) 0%, transparent 62%); }
+    .cabecera .wrap { position: relative; }
+    .cabecera .miga { font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 14px; }
+    .cabecera .miga a { color: var(--turquesa); text-decoration: none; }
+    .cabecera h1 { font-size: clamp(1.9rem, 4.5vw, 2.9rem); font-weight: 800; line-height: 1.12; letter-spacing: -.01em; max-width: 640px; }
+    .cabecera p.intro { margin-top: 16px; font-size: 1.06rem; color: rgba(255,255,255,.86); max-width: 600px; }
+
+    main { padding: 56px 0 72px; }
+    .cols { display: grid; grid-template-columns: 1fr; gap: 34px; }
+    @media (min-width: 900px) { .cols { grid-template-columns: 7fr 5fr; align-items: start; } }
+
+    .bloque { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 30px 28px; margin-bottom: 18px; }
+    .bloque h2 { color: var(--navy); font-size: 1.15rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: baseline; gap: 10px; }
+    .bloque h2 .n { font-family: var(--serif); font-style: italic; color: var(--turquesa); font-size: 1.3rem; }
+    ul.lista { list-style: none; display: grid; gap: 10px; }
+    ul.lista li { padding-left: 26px; position: relative; color: var(--ink); font-size: .95rem; }
+    ul.lista li::before { content: ""; position: absolute; left: 0; top: .48em; width: 14px; height: 8px; border-left: 2.5px solid var(--turquesa); border-bottom: 2.5px solid var(--turquesa); transform: rotate(-45deg); }
+    ul.lista li small { display: block; color: var(--muted); }
+    .nota { background: var(--bg); border-left: 3px solid var(--naranja); border-radius: 8px; padding: 14px 16px; font-size: .87rem; color: var(--muted); margin-top: 16px; }
+
+    /* Formulario */
+    .form-caja { background: var(--navy); color: #fff; border-radius: 18px; padding: 30px 28px; position: sticky; top: 84px; }
+    .form-caja h2 { font-size: 1.25rem; font-weight: 800; margin-bottom: 6px; }
+    .form-caja .sub { color: rgba(255,255,255,.7); font-size: .9rem; margin-bottom: 20px; }
+    .campos { display: grid; gap: 13px; }
+    .campos label { display: grid; gap: 6px; font-size: .85rem; font-weight: 700; color: rgba(255,255,255,.85); }
+    .campos input, .campos textarea { padding: 12px 13px; border-radius: 10px; border: 1.5px solid rgba(255,255,255,.22); background: rgba(255,255,255,.06); color: #fff; font: inherit; width: 100%; }
+    .campos input::placeholder, .campos textarea::placeholder { color: rgba(255,255,255,.4); }
+    .campos input:focus, .campos textarea:focus { outline: none; border-color: var(--turquesa); }
+    .cta-naranja { background: var(--naranja); color: #fff; border: 0; border-radius: 999px; padding: 14px 26px; font: inherit; font-weight: 800; font-size: .96rem; cursor: pointer; width: 100%; margin-top: 4px; transition: transform .18s ease, box-shadow .18s ease; }
+    .cta-naranja:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(221,78,7,.38); }
+    .cta-naranja:active { transform: scale(.97); }
+    .cta-naranja:disabled { opacity: .6; cursor: wait; }
+    .msg { font-weight: 700; min-height: 1.4em; font-size: .9rem; margin-top: 10px; text-align: center; }
+    .msg.ok { color: #7be0a2; } .msg.err { color: #ffb3a0; }
+    .hp { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+    .privacidad { font-size: .76rem; color: rgba(255,255,255,.45); margin-top: 10px; text-align: center; }
+    .otros-ramos { margin-top: 26px; }
+    .otros-ramos .tit { font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .otros-ramos .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .otros-ramos a { border: 1.5px solid var(--line); background: var(--white); color: var(--navy); border-radius: 999px; padding: 8px 15px; font-size: .85rem; font-weight: 700; text-decoration: none; transition: border-color .2s, color .2s; }
+    .otros-ramos a:hover { border-color: var(--turquesa); color: var(--turquesa); }
+
+    footer { background: var(--navy-deep); color: rgba(255,255,255,.7); font-size: .82rem; padding: 26px 0; margin-top: 40px; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+    @media (max-width: 899px) { .form-caja { position: static; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="Asegurados — inicio">
+      <img src="logo-rg.png" alt="RG — Ricardo García, Corredor de la Actividad Aseguradora CAA-002008">
+    </a>
+    <div class="der">
+      <a class="volver" href="index.html#ramos">← Todos los ramos</a>
+      <a class="wa-mini" id="wa-header" href="https://wa.me/584128499103" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<section class="cabecera">
+  <div class="wrap">
+    <p class="miga fr"><a href="index.html">Inicio</a> · Ramos · <span id="miga-ramo"></span></p>
+    <h1 class="fr d1" id="titulo"></h1>
+    <p class="intro fr d2" id="intro"></p>
+  </div>
+</section>
+
+<main>
+  <div class="wrap cols">
+    <div>
+      <div class="bloque fr d2">
+        <h2><span class="n">01.</span> ¿Qué cubre?</h2>
+        <ul class="lista" id="coberturas"></ul>
+        <p class="nota" id="nota"></p>
+      </div>
+      <div class="bloque fr d3">
+        <h2><span class="n">02.</span> Alcance y opciones</h2>
+        <ul class="lista" id="alcance"></ul>
+      </div>
+      <div class="bloque fr d3">
+        <h2><span class="n">03.</span> ¿Cómo cotizamos?</h2>
+        <ul class="lista">
+          <li>Me cuentas qué necesitas con el formulario o por WhatsApp.</li>
+          <li>Cotizo tu caso en las compañías que trabajo y te presento las opciones con sus diferencias reales.</li>
+          <li>Eliges con calma — y cuando llegue el momento del siniestro, yo gestiono tu reclamo.</li>
+        </ul>
+      </div>
+      <div class="otros-ramos fr d3">
+        <p class="tit">Explora otros ramos</p>
+        <div class="chips" id="chips-otros"></div>
+      </div>
+    </div>
+
+    <aside class="form-caja fr d2">
+      <h2>Cotiza <span id="form-ramo" class="acc" style="font-family:var(--serif);font-style:italic;color:var(--turquesa)"></span></h2>
+      <p class="sub">Sin compromiso. Te respondo hoy mismo por WhatsApp o correo.</p>
+      <form id="form-cotizar" novalidate>
+        <div class="campos">
+          <label>Nombre y apellido *
+            <input type="text" name="nombre" required maxlength="120" autocomplete="name" placeholder="Tu nombre" />
+          </label>
+          <label>WhatsApp / Teléfono
+            <input type="tel" name="telefono" maxlength="20" placeholder="0412-1234567" autocomplete="tel" />
+          </label>
+          <label>Correo
+            <input type="email" name="email" maxlength="120" placeholder="tucorreo@ejemplo.com" autocomplete="email" />
+          </label>
+          <label>Cuéntame tu caso
+            <textarea name="mensaje" maxlength="600" rows="3" placeholder=""></textarea>
+          </label>
+        </div>
+        <!-- honeypot anti-bots -->
+        <label class="hp" aria-hidden="true">No llenar<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        <button type="submit" class="cta-naranja" id="btn-enviar">Pedir mi cotización</button>
+        <p class="msg" id="msg-cotizar" role="status"></p>
+        <p class="privacidad">Tus datos solo se usan para preparar tu cotización. Sin spam.</p>
+      </form>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><strong>RICARDO ANTONIO GARCIA BLANCO</strong> · RIF V167979897 · Corredor de la Actividad Aseguradora · Sudeaseg CAA-002008</span>
+    <span>© 2026 Asegurados. Todos los derechos reservados.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Contenido por ramo. Coberturas generales del mercado venezolano: las
+     condiciones exactas siempre dependen de la compañía y el plan. */
+  var RAMOS = {
+    'automovil': {
+      titulo: 'Seguro de Automóvil',
+      intro: 'Protege tu carro o moto contra choques, robo y daños a terceros — desde el RCV obligatorio hasta la cobertura amplia.',
+      coberturas: [
+        ['Cobertura amplia', 'daños propios por colisión o volcamiento, con inspección previa del vehículo'],
+        ['Pérdida total', 'por accidente o por robo/hurto del vehículo'],
+        ['RCV — daños a terceros', 'la responsabilidad civil obligatoria por daños a cosas y personas'],
+        ['Accidentes de ocupantes (APOV)', 'gastos médicos de quienes viajan contigo'],
+        ['Defensa penal y asistencia legal', 'según el plan contratado'],
+        ['Grúa y asistencia vial', 'disponible según compañía y plan']
+      ],
+      alcance: [
+        ['Particulares, carga liviana y motos', 'planes según el uso del vehículo'],
+        ['Suma asegurada a valor de mercado', 'ajustable en la renovación'],
+        ['Primas en bolívares o divisas', 'según la compañía'],
+        ['Emisión rápida del RCV', 'con La Internacional de Seguros puedes emitirlo tú mismo al instante desde la página principal']
+      ],
+      placeholder: 'Marca, modelo y año del vehículo; uso particular o de trabajo…',
+      nota: 'Los deducibles, exclusiones y condiciones exactas dependen del condicionado de cada compañía — te presento las diferencias reales al cotizar.'
+    },
+    'salud': {
+      titulo: 'Salud (HCM)',
+      intro: 'Hospitalización, Cirugía y Maternidad para ti, tu familia o tu empresa — en bolívares o divisas, con red de clínicas en todo el país.',
+      coberturas: [
+        ['Hospitalización y cirugía', 'emergencias y procedimientos electivos según plan'],
+        ['Maternidad', 'con plazos de espera definidos en el condicionado'],
+        ['Atención de emergencias', 'carta aval o clave de emergencia según el caso'],
+        ['Consultas y ambulatorio', 'disponible en planes superiores'],
+        ['Medicinas y exámenes en clínica', 'dentro de la cobertura contratada']
+      ],
+      alcance: [
+        ['Individual, familiar y colectivo', 'planes para empresas desde pocos titulares'],
+        ['Bolívares o divisas', 'sumas y primas según la compañía'],
+        ['Red nacional de clínicas', 'y opciones con alcance internacional'],
+        ['Continuidad de pólizas', 'evalúo reconocimiento de antigüedad al cambiarte de compañía']
+      ],
+      placeholder: 'Edades de las personas a asegurar, ciudad, si ya tienen póliza…',
+      nota: 'Preexistencias, plazos de espera y exclusiones dependen del condicionado de cada compañía. Contratar joven y a tiempo siempre mejora las condiciones.'
+    },
+    'vida': {
+      titulo: 'Seguro de Vida',
+      intro: 'Respaldo económico para tu familia si tú faltas — la protección más importante y la que menos cuesta.',
+      coberturas: [
+        ['Fallecimiento por cualquier causa', 'la suma asegurada para tus beneficiarios'],
+        ['Doble indemnización por accidente', 'según plan'],
+        ['Invalidez total y permanente', 'anticipo de la suma según condicionado'],
+        ['Enfermedades graves', 'anticipos disponibles en algunos planes'],
+        ['Gastos funerarios', 'como cobertura adicional']
+      ],
+      alcance: [
+        ['Individual o colectivo', 'también como beneficio para empleados de tu empresa'],
+        ['Sumas en divisas', 'proteges el valor real del respaldo'],
+        ['Beneficiarios libres', 'y modificables cuando lo necesites'],
+        ['Primas accesibles', 'mientras más joven contratas, mejor tarifa']
+      ],
+      placeholder: 'Tu edad, suma deseada, a quién quieres proteger…',
+      nota: 'Edades de ingreso y permanencia, y requisitos de asegurabilidad, dependen de cada compañía.'
+    },
+    'hogar': {
+      titulo: 'Seguro de Hogar',
+      intro: 'Tu casa y lo que hay dentro, protegidos contra incendio, robo y eventos de la naturaleza.',
+      coberturas: [
+        ['Incendio, rayo y explosión', 'sobre estructura y contenido'],
+        ['Eventos de la naturaleza', 'sismo, inundación y otros según plan — clave tras los sismos recientes'],
+        ['Robo y hurto', 'del contenido declarado'],
+        ['Responsabilidad civil familiar', 'daños a terceros desde tu vivienda'],
+        ['Rotura de vidrios y daños por agua', 'según plan']
+      ],
+      alcance: [
+        ['Casas, apartamentos y townhouses', 'propias o alquiladas (contenido)'],
+        ['Suma a valor de reposición', 'estructura y contenido por separado'],
+        ['Planes para condominios', 'áreas comunes de edificios y conjuntos'],
+        ['Primas en bolívares o divisas', 'según la compañía']
+      ],
+      placeholder: 'Tipo de vivienda, ciudad, valor aproximado a asegurar…',
+      nota: 'Las coberturas de eventos naturales y sus deducibles varían por compañía — es la letra que más vale la pena comparar.'
+    },
+    'funeraria': {
+      titulo: 'Previsión Funeraria',
+      intro: 'Acompañamiento y servicio completo cuando más se necesita, sin que la familia tenga que preocuparse por nada.',
+      coberturas: [
+        ['Servicio funerario completo', 'velación, capilla, arreglos y trámites'],
+        ['Inhumación o cremación', 'según la elección de la familia'],
+        ['Traslados', 'dentro del alcance del plan'],
+        ['Atención 24/7', 'acompañamiento desde la primera llamada']
+      ],
+      alcance: [
+        ['Individual o familiar', 'planes que cubren varias generaciones: hijos, padres y abuelos'],
+        ['Colectivos para empresas', 'como beneficio para trabajadores'],
+        ['Sin límite de edad en algunos planes', 'ideal para incluir a los abuelos']
+      ],
+      placeholder: 'Cuántas personas y sus edades…',
+      nota: 'Plazos de carencia y alcance territorial del servicio según el plan de cada compañía.'
+    },
+    'fianzas': {
+      titulo: 'Fianzas',
+      intro: 'Las garantías que tu empresa necesita para contratar con el Estado y con privados.',
+      coberturas: [
+        ['Fiel cumplimiento', 'garantiza la ejecución del contrato'],
+        ['Anticipo', 'respalda los adelantos recibidos'],
+        ['Licitación (mantenimiento de oferta)', 'para participar en procesos de contratación'],
+        ['Laboral', 'prestaciones sociales ante el ente contratante'],
+        ['Aduanales', 'operaciones de importación y tránsito']
+      ],
+      alcance: [
+        ['Empresas y contratistas', 'de cualquier tamaño con recaudos al día'],
+        ['Emisión ágil', 'con el expediente completo la emisión es rápida'],
+        ['Renovaciones y finiquitos', 'te acompaño en todo el ciclo de la fianza']
+      ],
+      placeholder: 'Tipo de fianza, monto y ente ante el que la presentas…',
+      nota: 'Requieren análisis de solvencia y contragarantías según el monto — te guío con la lista de recaudos exacta.'
+    },
+    'embarcaciones': {
+      titulo: 'Seguro de Embarcaciones',
+      intro: 'Casco, motor y responsabilidad náutica para tu lancha, yate o moto de agua.',
+      coberturas: [
+        ['Casco y maquinaria', 'pérdida total o parcial de la embarcación'],
+        ['Responsabilidad civil náutica', 'daños a terceros en el agua'],
+        ['Robo del motor y equipos', 'según plan'],
+        ['Salvamento y remoción', 'gastos asociados según condicionado']
+      ],
+      alcance: [
+        ['Lanchas, yates y motos de agua', 'uso recreativo y deportivo'],
+        ['Navegación en aguas nacionales', 'con extensiones según la compañía'],
+        ['Inspección y valoración previa', 'coordino el proceso contigo']
+      ],
+      placeholder: 'Tipo de embarcación, eslora, año, marina o club…',
+      nota: 'Zonas de navegación cubiertas y requisitos de inspección varían por compañía.'
+    },
+    'viajes': {
+      titulo: 'Asistencia en Viaje',
+      intro: 'Viaja tranquilo: emergencias médicas, equipaje y asistencia en cualquier parte del mundo.',
+      coberturas: [
+        ['Emergencias médicas en el exterior', 'hospitalización, medicinas y odontología de urgencia'],
+        ['Repatriación sanitaria', 'y traslados médicos'],
+        ['Equipaje', 'pérdida o demora según plan'],
+        ['Cancelación o interrupción del viaje', 'en planes que la incluyen'],
+        ['Asistencia legal y adelanto de fondos', 'según plan']
+      ],
+      alcance: [
+        ['Por viaje o anual multiviaje', 'para viajeros frecuentes'],
+        ['Cumple requisitos de visas', 'incluida cobertura para el espacio Schengen'],
+        ['Individual, familiar o corporativo', 'planes para grupos y empresas']
+      ],
+      placeholder: 'Destino, fechas del viaje y edades de los viajeros…',
+      nota: 'Los límites por cobertura y la edad máxima varían según el plan — dime tu destino y te doy las opciones exactas.'
+    },
+    'otros': {
+      titulo: 'Otros riesgos',
+      intro: 'Si se puede asegurar, te consigo la opción: estos son algunos de los ramos que también trabajo.',
+      coberturas: [
+        ['Transporte de mercancía', 'importaciones, exportaciones y traslados nacionales'],
+        ['Todo riesgo empresarial', 'instalaciones, inventarios y equipos de tu negocio'],
+        ['Equipos electrónicos y maquinarias', 'incluyendo equipos médicos e industriales'],
+        ['Responsabilidad civil empresarial y profesional', 'protege tu operación frente a terceros'],
+        ['Accidentes personales', 'individual o colectivo para equipos de trabajo'],
+        ['Combinado residencial-comercial', 'locales, oficinas y galpones']
+      ],
+      alcance: [
+        ['Riesgos personales y empresariales', 'evalúo tu caso y te digo qué compañía lo suscribe'],
+        ['Pymes y grandes empresas', 'programas a la medida de tu operación'],
+        ['¿No lo ves aquí?', 'pregúntame igual — si alguna compañía del mercado lo suscribe, lo cotizamos']
+      ],
+      placeholder: 'Cuéntame qué necesitas asegurar…',
+      nota: 'Cada riesgo especial se evalúa con la compañía adecuada — mientras más detalle me des, más rápido llega tu cotización.'
+    }
+  };
+  var ORDEN = ['automovil', 'salud', 'vida', 'hogar', 'funeraria', 'fianzas', 'embarcaciones', 'viajes', 'otros'];
+
+  var params = new URLSearchParams(location.search);
+  var slug = (params.get('r') || 'salud').toLowerCase();
+  if (!RAMOS[slug]) slug = 'salud';
+  var R = RAMOS[slug];
+
+  document.title = R.titulo + ' — Asegurados | Ricardo García, Corredor de Seguros';
+  document.getElementById('miga-ramo').textContent = R.titulo;
+  document.getElementById('titulo').textContent = R.titulo;
+  document.getElementById('intro').textContent = R.intro;
+  document.getElementById('form-ramo').textContent = R.titulo;
+  document.getElementById('nota').textContent = R.nota;
+  document.querySelector('[name=mensaje]').placeholder = R.placeholder;
+
+  function llenar(id, items) {
+    var ul = document.getElementById(id);
+    items.forEach(function (par) {
+      var li = document.createElement('li');
+      var b = document.createElement('strong'); b.textContent = par[0];
+      var s = document.createElement('small'); s.textContent = par[1];
+      li.appendChild(b); li.appendChild(s); ul.appendChild(li);
+    });
+  }
+  llenar('coberturas', R.coberturas);
+  llenar('alcance', R.alcance);
+
+  var chips = document.getElementById('chips-otros');
+  ORDEN.forEach(function (s) {
+    if (s === slug) return;
+    var a = document.createElement('a');
+    a.href = 'ramo.html?r=' + s;
+    a.textContent = RAMOS[s].titulo;
+    chips.appendChild(a);
+  });
+
+  var WA = 'https://wa.me/584128499103';
+  document.getElementById('wa-header').href = WA + '?text=' + encodeURIComponent('Hola, quiero cotizar ' + R.titulo);
+
+  /* Envío → n8n (WF3 Otros canales). VACÍO hasta exponer el webhook por el
+     Cloudflare Tunnel; mientras tanto cae con gracia a WhatsApp. */
+  var ENDPOINT = '';
+  var form = document.getElementById('form-cotizar');
+  var btn = document.getElementById('btn-enviar');
+  var msg = document.getElementById('msg-cotizar');
+  function aviso(t, c) { msg.textContent = t; msg.className = 'msg ' + (c || ''); }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var d = new FormData(form);
+    if (d.get('website')) return; // honeypot
+    var nombre = (d.get('nombre') || '').trim();
+    var telefono = (d.get('telefono') || '').trim();
+    var email = (d.get('email') || '').trim();
+    var extra = (d.get('mensaje') || '').trim();
+    if (!nombre) return aviso('Escribe tu nombre para poder atenderte.', 'err');
+    if (!telefono && !email) return aviso('Déjanos al menos un WhatsApp o un correo.', 'err');
+
+    var detalle = R.titulo + (extra ? '. ' + extra : '');
+    var payload = {
+      nombre: nombre, telefono: telefono || null, email: email || null,
+      mensaje: detalle, canal: 'web', origen: 'landing-ramo-' + slug,
+      utm_source: params.get('utm_source') || null,
+      utm_medium: params.get('utm_medium') || null,
+      utm_campaign: params.get('utm_campaign') || null
+    };
+
+    if (!ENDPOINT) {
+      var wtxt = 'Hola, soy ' + nombre + '. Quiero cotizar ' + detalle + (email ? '. Mi correo: ' + email : '');
+      window.open(WA + '?text=' + encodeURIComponent(wtxt), '_blank', 'noopener');
+      aviso('Te llevamos a WhatsApp para completar tu cotización 👌', 'ok');
+      return;
+    }
+    btn.disabled = true; aviso('Enviando…');
+    fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { s: r.status, j: j }; }); })
+      .then(function (res) {
+        if (res.s === 200 && res.j && res.j.ok !== false) { form.reset(); aviso('¡Recibido! Te contacto hoy mismo. 🎉', 'ok'); }
+        else if (res.s === 400) { aviso('Revisa tus datos e inténtalo de nuevo.', 'err'); }
+        else { aviso('No pudimos procesarlo — escríbenos por WhatsApp y te atendemos ya.', 'err'); }
+      })
+      .catch(function () { aviso('Sin conexión — inténtalo de nuevo o ve directo a WhatsApp.', 'err'); })
+      .then(function () { btn.disabled = false; });
+  });
+})();
+</script>
+
+</body>
+</html>
