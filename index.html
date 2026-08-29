@@ -14,6 +14,10 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://aseguradosve.com/og-image.png">
+  <meta name="theme-color" content="#1E335D">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="favicon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -91,6 +95,53 @@
       background: radial-gradient(circle, rgba(42,70,128,.55) 0%, transparent 65%); }
     .hero .fondo svg { position: absolute; right: -60px; bottom: -40px; width: 620px; max-width: 80vw; opacity: .1; }
     .hero .contenido { position: relative; max-width: 700px; }
+    /* ── Hero en tres columnas: foto (rojo) · texto · collage parallax (amarillo) ── */
+    .hero .trio { position: relative; display: grid; grid-template-columns: 1fr; gap: 34px; align-items: center; }
+    @media (min-width: 1000px) { .hero .trio { grid-template-columns: 4.6fr 6.6fr 4.8fr; align-items: end; } }
+
+    .hero-foto { display: flex; justify-content: center; align-items: flex-end; }
+    .hero-foto a { display: block; width: 100%; max-width: 430px; text-decoration: none; transition: transform .3s ease; }
+    .hero-foto a:hover { transform: translateY(-4px); }
+    @media (min-width: 1000px) { .hero-foto { margin-bottom: -52px; } }
+    /* Foto fusionada al fondo: PNG con fondo removido (rembg), sin marco.
+       Se desvanece hacia el navy con una máscara de degradado inferior y un
+       resplandor turquesa detrás. */
+    .foto-fusion { position: relative; width: 100%; max-width: 430px; }
+    .foto-fusion img {
+      display: block; width: 100%; height: auto;
+      filter: drop-shadow(0 24px 50px rgba(8,16,38,.55));
+      -webkit-mask-image: linear-gradient(to bottom, black 0%, black 76%, transparent 98%);
+      mask-image: linear-gradient(to bottom, black 0%, black 76%, transparent 98%);
+    }
+    .foto-fusion::before {
+      content: ""; position: absolute; inset: 6% -16% -8% -16%; z-index: -1; border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(0,151,178,.30), rgba(42,70,128,.18) 55%, transparent 78%);
+    }
+    .foto-fusion .placa { position: absolute; left: 50%; bottom: 4px; transform: translateX(-50%); text-align: center; white-space: nowrap; }
+    .foto-fusion .placa b { display: block; color: #fff; font-size: .95rem; text-shadow: 0 2px 10px rgba(10,18,40,.7); }
+    .foto-fusion .placa span { color: rgba(255,255,255,.75); font-size: .76rem; }
+
+    .hero-visual { position: relative; height: 470px; display: none; }
+    @media (min-width: 1000px) { .hero-visual { display: block; } }
+    .capa { position: absolute; will-change: transform; }
+    .chip-ramo {
+      display: flex; align-items: center; gap: 9px;
+      background: rgba(255,255,255,.97); border-radius: 999px; padding: 10px 18px 10px 11px;
+      box-shadow: 0 14px 36px rgba(8,16,38,.4); font-weight: 800; font-size: .86rem; color: var(--navy);
+      white-space: nowrap;
+    }
+    .chip-ramo svg { width: 26px; height: 26px; color: var(--turquesa); flex: none; }
+    .chip-ramo.naranja svg { color: var(--naranja); }
+    .chip-stat {
+      display: grid; justify-items: center; text-align: center; min-width: 106px;
+      background: rgba(22,38,74,.85); border: 1.5px solid rgba(0,151,178,.5);
+      border-radius: 16px; padding: 12px 16px; color: #fff; box-shadow: 0 14px 36px rgba(8,16,38,.45);
+    }
+    .chip-stat b { display: block; font-size: 1.4rem; color: var(--turquesa); font-weight: 800; line-height: 1.1; }
+    .chip-stat span { font-size: .74rem; color: rgba(255,255,255,.8); line-height: 1.3; }
+    .flota { animation: flotar 6s ease-in-out infinite; }
+    @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    @media (prefers-reduced-motion: reduce) { .flota { animation: none; } }
     .hero .pre { font-size: .82rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 22px; }
     .hero .pre s { text-decoration: none; color: var(--turquesa); }
     .hero h1 { font-size: clamp(2.2rem, 5.4vw, 3.7rem); line-height: 1.08; font-weight: 800; letter-spacing: -.01em; }
@@ -264,6 +315,8 @@
     .noti h3 a:hover { color: var(--turquesa); }
     .noti .leer { margin-top: auto; font-size: .85rem; font-weight: 700; color: var(--turquesa); text-decoration: none; }
     .noti .leer:hover { color: var(--naranja); }
+    .noti.destacada { border-color: var(--turquesa); border-width: 1.5px; background: linear-gradient(180deg, #f0fafc 0%, var(--bg) 100%); }
+    .noti.destacada .fuente { background: linear-gradient(90deg, #f09433, #dc2743 55%, #bc1888); }
     .noti-mas { margin-top: 22px; font-size: .88rem; color: var(--muted); }
     .noti-mas a { color: var(--turquesa); font-weight: 700; text-decoration: none; }
 
@@ -274,8 +327,12 @@
     .contacto .t a { color: var(--turquesa); font-weight: 800; text-decoration: none; font-size: 1.02rem; }
     .contacto .t p { color: var(--muted); font-size: .92rem; }
 
-    footer { background: var(--navy-deep); color: rgba(255,255,255,.7); font-size: .83rem; padding: 30px 0; }
-    footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+    footer { background: var(--navy-deep); color: rgba(255,255,255,.7); font-size: .83rem; padding: 26px 0 30px; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; }
+    .redes-footer { display: flex; gap: 12px; width: 100%; justify-content: center; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.12); }
+    .redes-footer a { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.25); color: rgba(255,255,255,.85); transition: border-color .2s, color .2s, transform .2s; }
+    .redes-footer a:hover { border-color: var(--turquesa); color: var(--turquesa); transform: translateY(-2px); }
+    .redes-footer svg { width: 18px; height: 18px; }
 
     .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 60; background: var(--wa); color: #fff; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; text-decoration: none; box-shadow: 0 8px 24px rgba(37,211,102,.4); transition: transform .15s ease; }
     .wa-float:hover { transform: scale(1.07); }
@@ -325,7 +382,16 @@
       <path d="M300 122 L400 160 V219 C400 267 356 296 300 313 C244 296 200 267 200 219 V160 Z" opacity=".35"/>
     </svg>
   </div>
-  <div class="wrap contenido">
+  <div class="wrap trio">
+    <div class="hero-foto fr d2" data-depth="7">
+      <a href="https://www.linkedin.com/in/ricardogarcia-corredordeseguros" target="_blank" rel="noopener" title="Sígueme en LinkedIn" aria-label="Perfil de Ricardo García en LinkedIn">
+        <figure class="foto-fusion">
+          <img src="foto-ricardo-recorte.png" alt="Ricardo García, Corredor de la Actividad Aseguradora" width="562" height="1000">
+          <figcaption class="placa"><b>Ricardo García</b><span>Corredor Sudeaseg · CAA-002008 · in/LinkedIn</span></figcaption>
+        </figure>
+      </a>
+    </div>
+    <div class="contenido">
     <p class="pre fr">Corredor de seguros · <s>Sudeaseg CAA-002008</s></p>
     <h1 class="words" id="titular">Protege lo que <em class="acc">más quieres,</em> con alguien que da la cara.</h1>
     <p class="sub fr d2">Comparo por ti entre las principales aseguradoras de Venezuela y te acompaño
@@ -337,6 +403,16 @@
         Cotiza por WhatsApp
       </a>
       <a class="btn btn-ghost" href="#cotizar">Armar mi cotización</a>
+    </div>
+    </div>
+
+    <div class="hero-visual fr d3" id="collage" aria-hidden="true">
+      <div class="capa" style="top:6%;left:2%" data-depth="26"><span class="chip-ramo flota" style="animation-delay:0s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 30l3-10c.6-2 2.4-3 4.4-3h17.2c2 0 3.8 1 4.4 3l3 10"/><rect x="6" y="30" width="36" height="8" rx="2"/><circle cx="14" cy="38" r="3"/><circle cx="34" cy="38" r="3"/></svg>Automóvil</span></div>
+      <div class="capa" style="top:24%;right:0" data-depth="42"><span class="chip-ramo flota" style="animation-delay:-1.6s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="12" width="32" height="28" rx="3"/><path d="M24 20v12M18 26h12M16 12V8h16v4"/></svg>Salud (HCM)</span></div>
+      <div class="capa" style="top:47%;left:8%" data-depth="16"><span class="chip-ramo naranja flota" style="animation-delay:-3.1s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40s-14-8.35-14-18a8 8 0 0 1 14-5.3A8 8 0 0 1 38 22c0 9.65-14 18-14 18Z"/></svg>Vida</span></div>
+      <div class="capa" style="top:66%;right:8%" data-depth="34"><span class="chip-ramo flota" style="animation-delay:-4.4s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22 24 9l16 13"/><path d="M12 20v18h24V20"/><path d="M20 38V28h8v10"/></svg>Hogar</span></div>
+      <div class="capa" style="bottom:2%;left:16%" data-depth="24"><span class="chip-ramo flota" style="animation-delay:-2.3s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30l36-14-8 22-10-6-8 6-2-8Z"/><path d="M42 16 24 32"/></svg>Viajes</span></div>
+      <div class="capa" style="top:40%;right:26%" data-depth="10"><span class="chip-stat flota" style="animation-delay:-5.2s"><b>6</b><span>compañías<br>aliadas</span></span></div>
     </div>
   </div>
 </section>
@@ -575,7 +651,13 @@
     </div>
     <div class="tarjetas">
       <div class="t rv"><h3>WhatsApp Ventas</h3><p><a href="https://wa.me/584128499103" target="_blank" rel="noopener">+58 412-849-9103</a></p></div>
-      <div class="t rv s1"><h3>Instagram</h3><p><a href="https://instagram.com/asegurados_ve" target="_blank" rel="noopener">@asegurados_ve</a></p></div>
+      <div class="t rv s1"><h3>Redes sociales</h3>
+        <p style="display:grid;gap:6px">
+          <a href="https://instagram.com/asegurados_ve" target="_blank" rel="noopener">Instagram · @asegurados_ve</a>
+          <a href="https://www.facebook.com/profile.php?id=100065852615922" target="_blank" rel="noopener">Facebook · Ricardo García Corredor</a>
+          <a href="https://www.linkedin.com/in/ricardogarcia-corredordeseguros" target="_blank" rel="noopener">LinkedIn · Ricardo García</a>
+        </p>
+      </div>
       <div class="t rv s2"><h3>Ubicación</h3><p>Barcelona, Estado Anzoátegui, Venezuela<br>Atención en todo el país</p></div>
     </div>
   </div>
@@ -583,6 +665,12 @@
 
 <footer>
   <div class="wrap">
+    <div class="redes-footer">
+      <a href="https://instagram.com/asegurados_ve" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram @asegurados_ve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.facebook.com/profile.php?id=100065852615922" target="_blank" rel="noopener" aria-label="Facebook" title="Fanpage de Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H8.5v3H11v7Z"/></svg></a>
+      <a href="https://www.linkedin.com/in/ricardogarcia-corredordeseguros" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn de Ricardo García"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.8H3.6V20h2.9ZM5 7.6a1.7 1.7 0 1 0 0-3.4 1.7 1.7 0 0 0 0 3.4ZM20.4 13.9c0-3.2-1.7-4.7-4-4.7a3.5 3.5 0 0 0-3.1 1.7V8.8H10.4V20h2.9v-5.9c0-1.6.8-2.5 2-2.5s1.8.9 1.8 2.5V20h3.3Z"/></svg></a>
+      <a href="https://wa.me/584128499103" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp Ventas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5 0-.2 0-.4-.1-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.5 3.9 1.7.7 2.3.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></a>
+    </div>
     <span><strong>RICARDO ANTONIO GARCIA BLANCO</strong> · RIF V167979897 · Corredor de la Actividad Aseguradora · Sudeaseg CAA-002008</span>
     <span>© 2026 Asegurados. Todos los derechos reservados.</span>
   </div>
@@ -629,9 +717,36 @@
     partes.forEach(function (p) { h1.appendChild(p); });
     var ws = h1.querySelectorAll('.w');
     ws.forEach(function (w, i) { w.style.transitionDelay = (0.12 + i * 0.07) + 's'; });
-    requestAnimationFrame(function () { h1.classList.add('in'); });
+    setTimeout(function () { h1.classList.add('in'); }, 60);
   } else {
     h1.classList.add('in');
+  }
+
+  /* Parallax del hero: la foto y los chips de ramos siguen al mouse con
+     profundidades distintas. Solo con puntero fino y sin reduced-motion. */
+  var heroEl = document.querySelector('.hero');
+  var capas = document.querySelectorAll('.capa, .hero-foto');
+  if (heroEl && capas.length && !reduce && matchMedia('(pointer: fine)').matches) {
+    var objetivo = { x: 0, y: 0 }, actual = { x: 0, y: 0 }, animando = false;
+    heroEl.addEventListener('mousemove', function (e) {
+      var r = heroEl.getBoundingClientRect();
+      objetivo.x = (e.clientX - r.left) / r.width - 0.5;
+      objetivo.y = (e.clientY - r.top) / r.height - 0.5;
+      if (!animando) { animando = true; requestAnimationFrame(pasoParallax); }
+    });
+    heroEl.addEventListener('mouseleave', function () { objetivo.x = 0; objetivo.y = 0; });
+    function pasoParallax() {
+      actual.x += (objetivo.x - actual.x) * 0.08;
+      actual.y += (objetivo.y - actual.y) * 0.08;
+      capas.forEach(function (c) {
+        var d = parseFloat(c.getAttribute('data-depth') || 0);
+        if (!d) return;
+        c.style.transform = 'translate3d(' + (actual.x * d).toFixed(2) + 'px,' + (actual.y * d * 0.7).toFixed(2) + 'px,0)';
+      });
+      if (Math.abs(objetivo.x - actual.x) + Math.abs(objetivo.y - actual.y) > 0.001) {
+        requestAnimationFrame(pasoParallax);
+      } else { animando = false; }
+    }
   }
 
   /* Aparición de secciones al hacer scroll */
@@ -682,6 +797,12 @@
      bloque automáticamente desde la Sudeaseg/prensa. */
   var NOTICIAS = [
     {
+      fuente: 'Instagram', fecha: 'cada día',
+      titulo: 'Historias de hoy: tips, avisos y actualidad del seguro en @asegurados_ve',
+      url: 'https://www.instagram.com/stories/asegurados_ve/',
+      destacada: true
+    },
+    {
       fuente: 'El Diario', fecha: '11 ago 2026',
       titulo: 'Tras los sismos, la falta de seguros en condominios deja a miles de familias sin respaldo',
       url: 'https://eldiario.com/2026/08/11/falta-seguros-condominios-impacto-sismos-venezuela/'
@@ -700,11 +821,11 @@
   var grid = document.getElementById('noti-grid');
   NOTICIAS.forEach(function (n, i) {
     var art = document.createElement('article');
-    art.className = 'noti rv' + (i ? ' s' + i : '');
+    art.className = 'noti rv' + (i ? ' s' + Math.min(i, 3) : '') + (n.destacada ? ' destacada' : '');
     art.innerHTML =
       '<div class="meta"><span class="fuente"></span><span class="fecha"></span></div>' +
       '<h3><a target="_blank" rel="noopener"></a></h3>' +
-      '<a class="leer" target="_blank" rel="noopener">Leer la nota →</a>';
+      '<a class="leer" target="_blank" rel="noopener">' + (n.destacada ? 'Ver historias →' : 'Leer la nota →') + '</a>';
     art.querySelector('.fuente').textContent = n.fuente;
     art.querySelector('.fecha').textContent = n.fecha;
     var enlace = art.querySelector('h3 a');
