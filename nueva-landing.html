@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asegurados — Ricardo García, Corredor de Seguros | Venezuela</title>
+  <meta name="description" content="Corredor de seguros inscrito en la Sudeaseg. Pólizas de Auto, Salud, Vida, Hogar, Funeraria, Fianzas y Embarcaciones en Venezuela. Cotiza con las principales aseguradoras del país.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Asegurados — Ricardo García, Corredor de Seguros">
+  <meta property="og:description" content="Cotiza Salud (HCM), Auto, Vida, Hogar y Fianzas con las principales aseguradoras de Venezuela. Corredor Sudeaseg CAA-002008.">
+  <meta property="og:url" content="https://aseguradosve.com/">
+  <meta property="og:image" content="https://aseguradosve.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aseguradosve.com/og-image.png">
+  <meta name="theme-color" content="#1E335D">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="favicon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "InsuranceAgency",
+    "name": "Asegurados — Ricardo García, Corredor de Seguros",
+    "url": "https://aseguradosve.com/",
+    "telephone": "+584128499103",
+    "areaServed": "Venezuela",
+    "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressRegion": "Anzoátegui", "addressCountry": "VE" }
+  }
+  </script>
+  <style>
+    /* Paleta oficial del Kit de Marca asegurados_ve (2026-06-08).
+       Verde #25d366 solo en botones que abren WhatsApp (color funcional de la app). */
+    :root {
+      --navy: #1E335D;
+      --navy-2: #2A4680;
+      --navy-deep: #16264a;
+      --turquesa: #0097B2;
+      --naranja: #DD4E07;
+      --ink: #22314f;
+      --muted: #737373;
+      --bg: #f8f7f4;          /* marfil cálido, no gris frío */
+      --white: #ffffff;
+      --line: #e6e2da;
+      --line-navy: rgba(30,51,93,.14);
+      --wa: #25d366;
+      --sans: 'Manrope', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --serif: 'Instrument Serif', Georgia, serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--ink); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+    em.acc { font-family: var(--serif); font-style: italic; font-weight: 400; }
+
+    /* ── Animaciones base (CSS puro; se apagan con reduced-motion) ── */
+    @keyframes fadeRise { from { opacity: 0; transform: translateY(22px); filter: blur(5px); } to { opacity: 1; transform: none; filter: none; } }
+    .fr { opacity: 0; animation: fadeRise .85s cubic-bezier(.16,1,.3,1) forwards; }
+    .fr.d1 { animation-delay: .15s; } .fr.d2 { animation-delay: .3s; }
+    .fr.d3 { animation-delay: .45s; } .fr.d4 { animation-delay: .6s; }
+    .rv { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .rv.in { opacity: 1; transform: none; }
+    .rv.s1 { transition-delay: .08s; } .rv.s2 { transition-delay: .16s; }
+    .rv.s3 { transition-delay: .24s; } .rv.s4 { transition-delay: .32s; }
+    .w { display: inline-block; opacity: 0; transform: translateY(14px); filter: blur(6px); transition: opacity .5s ease, transform .5s ease, filter .5s ease; }
+    .words.in .w { opacity: 1; transform: none; filter: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .fr, .rv, .w { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+    }
+
+    /* ── Header ── */
+    header { position: sticky; top: 0; z-index: 50; background: rgba(248,247,244,.88); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s ease, box-shadow .3s ease; }
+    header.scrolled { border-bottom-color: var(--line); box-shadow: 0 6px 24px rgba(30,51,93,.06); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 15px 0; gap: 12px; }
+    .brand { display: flex; align-items: center; text-decoration: none; }
+    .brand .logo-rg { height: 54px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 26px; font-size: .9rem; font-weight: 600; }
+    .nav-links a { color: var(--ink); text-decoration: none; opacity: .75; transition: opacity .2s; }
+    .nav-links a:hover { opacity: 1; color: var(--navy); }
+    .nav .der { display: flex; align-items: center; gap: 10px; }
+    .nav a.acceso { color: var(--navy); text-decoration: none; padding: 9px 16px; border-radius: 999px; border: 1.5px solid var(--line-navy); font-weight: 700; font-size: .85rem; white-space: nowrap; transition: border-color .2s; }
+    .nav a.acceso:hover { border-color: var(--navy); }
+    .nav a.wa-mini { background: var(--wa); color: #fff; text-decoration: none; padding: 10px 18px; border-radius: 999px; font-weight: 700; font-size: .87rem; white-space: nowrap; }
+
+    /* ── Hero ── */
+    .hero { position: relative; color: #fff; overflow: hidden; background: var(--navy); padding: 104px 0 118px; }
+    .hero .fondo { position: absolute; inset: 0; pointer-events: none; }
+    .hero .fondo .g1 { position: absolute; width: 900px; height: 900px; right: -280px; top: -420px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,151,178,.22) 0%, transparent 62%); }
+    .hero .fondo .g2 { position: absolute; width: 700px; height: 700px; left: -320px; bottom: -420px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(42,70,128,.55) 0%, transparent 65%); }
+    .hero .fondo svg { position: absolute; right: -60px; bottom: -40px; width: 620px; max-width: 80vw; opacity: .1; }
+    .hero .contenido { position: relative; max-width: 700px; }
+    /* ── Hero en tres columnas: foto (rojo) · texto · collage parallax (amarillo) ── */
+    .hero .trio { position: relative; display: grid; grid-template-columns: 1fr; gap: 34px; align-items: center; }
+    @media (min-width: 1000px) { .hero .trio { grid-template-columns: 5.2fr 6fr 5fr; align-items: end; } }
+
+    .hero-foto { display: flex; justify-content: center; align-items: flex-end; }
+    .hero-foto a { display: block; width: 100%; max-width: 520px; text-decoration: none; transition: transform .3s ease; }
+    .hero-foto a:hover { transform: translateY(-4px); }
+    @media (min-width: 1000px) { .hero-foto { margin-bottom: -64px; } }
+    /* Foto fusionada al fondo: PNG con fondo removido (rembg), sin marco.
+       Se desvanece hacia el navy con una máscara de degradado inferior y un
+       resplandor turquesa detrás. */
+    .foto-fusion { position: relative; width: 100%; max-width: 520px; }
+    .foto-fusion img {
+      display: block; width: 100%; height: auto;
+      filter: drop-shadow(0 24px 50px rgba(8,16,38,.55));
+      -webkit-mask-image: linear-gradient(to bottom, black 0%, black 76%, transparent 98%);
+      mask-image: linear-gradient(to bottom, black 0%, black 76%, transparent 98%);
+    }
+    .foto-fusion::before {
+      content: ""; position: absolute; inset: 6% -16% -8% -16%; z-index: -1; border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(0,151,178,.30), rgba(42,70,128,.18) 55%, transparent 78%);
+    }
+    .foto-fusion .placa { position: absolute; left: 50%; bottom: 4px; transform: translateX(-50%); text-align: center; white-space: nowrap; }
+    .foto-fusion .placa b { display: block; color: #fff; font-size: .95rem; text-shadow: 0 2px 10px rgba(10,18,40,.7); }
+    .foto-fusion .placa span { color: rgba(255,255,255,.75); font-size: .76rem; }
+
+    .hero-visual { position: relative; height: 560px; display: none; }
+    @media (min-width: 1000px) { .hero-visual { display: block; } }
+    .capa { position: absolute; will-change: transform; }
+    .chip-ramo {
+      display: flex; align-items: center; gap: 9px;
+      background: rgba(255,255,255,.97); border-radius: 999px; padding: 10px 18px 10px 11px;
+      box-shadow: 0 14px 36px rgba(8,16,38,.4); font-weight: 800; font-size: .86rem; color: var(--navy);
+      white-space: nowrap;
+    }
+    .chip-ramo svg { width: 26px; height: 26px; color: var(--turquesa); flex: none; }
+    .chip-ramo.naranja svg { color: var(--naranja); }
+    .chip-stat {
+      display: grid; justify-items: center; text-align: center; min-width: 106px;
+      background: rgba(22,38,74,.85); border: 1.5px solid rgba(0,151,178,.5);
+      border-radius: 16px; padding: 12px 16px; color: #fff; box-shadow: 0 14px 36px rgba(8,16,38,.45);
+    }
+    .chip-stat b { display: block; font-size: 1.4rem; color: var(--turquesa); font-weight: 800; line-height: 1.1; }
+    .chip-stat span { font-size: .74rem; color: rgba(255,255,255,.8); line-height: 1.3; }
+    .flota { animation: flotar 6s ease-in-out infinite; }
+    @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    @media (prefers-reduced-motion: reduce) { .flota { animation: none; } }
+    .hero .pre { font-size: .82rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 22px; }
+    .hero .pre s { text-decoration: none; color: var(--turquesa); }
+    .hero h1 { font-size: clamp(2.2rem, 5.4vw, 3.7rem); line-height: 1.08; font-weight: 800; letter-spacing: -.01em; }
+    .hero h1 .acc { color: var(--turquesa); font-size: 1.06em; }
+    .hero p.sub { margin: 24px 0 10px; font-size: 1.13rem; max-width: 540px; color: rgba(255,255,255,.88); font-weight: 500; }
+    .hero p.lic { font-size: .86rem; color: rgba(255,255,255,.6); margin-bottom: 34px; }
+    .hero .acciones { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; padding: 15px 28px; border-radius: 999px; font-size: .98rem; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+    .btn:active { transform: scale(.97); }
+    .btn-wa { background: var(--wa); color: #fff; position: relative; }
+    .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(37,211,102,.35); }
+    .btn-ghost { color: #fff; border: 1.5px solid rgba(255,255,255,.35); background: rgba(255,255,255,.03); }
+    .btn-ghost:hover { border-color: var(--turquesa); color: var(--turquesa); }
+
+    /* ── Barra de datos (divisores diagonales) ── */
+    .datos { background: var(--white); border-bottom: 1px solid var(--line); }
+    .datos .fila { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .datos .item { padding: 30px 18px; text-align: center; position: relative; }
+    .datos .item + .item::before { content: ""; position: absolute; left: 0; top: 50%; height: 46px; width: 1px; background: var(--line); transform: translateY(-50%) rotate(18deg); }
+    .datos .num { font-weight: 800; font-size: 1.35rem; color: var(--navy); letter-spacing: -.01em; }
+    .datos .num .acc { color: var(--turquesa); font-size: 1.15em; }
+    .datos .lbl { font-size: .82rem; color: var(--muted); margin-top: 3px; }
+
+    /* ── Secciones editoriales ── */
+    section { padding: 84px 0; }
+    .cab { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 48px; }
+    @media (min-width: 820px) { .cab { grid-template-columns: 7fr 5fr; align-items: end; gap: 40px; } }
+    .eti { font-size: .78rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--naranja); display: block; margin-bottom: 12px; }
+    .cab h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); color: var(--navy); font-weight: 800; letter-spacing: -.01em; line-height: 1.15; }
+    .cab p { color: var(--muted); font-size: 1rem; max-width: 46ch; }
+    .linea { height: 1px; background: var(--line); margin-bottom: 48px; }
+
+    /* ── Ramos ── */
+    .ramos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .ramo { display: block; text-decoration: none; background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; position: relative; }
+    .ramo:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(30,51,93,.1); border-color: var(--line-navy); }
+    .ramo .ver { display: inline-block; margin-top: 12px; font-size: .84rem; font-weight: 800; color: var(--turquesa); opacity: .85; transition: opacity .2s, color .2s; }
+    .ramo:hover .ver { opacity: 1; color: var(--naranja); }
+    .ramo .ic { display: block; width: 42px; height: 42px; margin-bottom: 16px; color: var(--turquesa); }
+    .ramo .ic svg { width: 100%; height: 100%; }
+    .ramo h3 { color: var(--navy); font-size: 1.05rem; font-weight: 800; margin-bottom: 5px; }
+    .ramo p { color: var(--muted); font-size: .9rem; }
+    .ramo .n { position: absolute; top: 22px; right: 22px; font-family: var(--serif); font-style: italic; color: var(--line-navy); font-size: 1.1rem; }
+
+    /* ── Declaración (texto que se pinta con el scroll) ── */
+    .frase { background: var(--white); padding: 110px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .frase .texto { position: relative; font-size: clamp(1.5rem, 3.6vw, 2.6rem); line-height: 1.3; font-weight: 800; letter-spacing: -.01em; max-width: 880px; }
+    .frase .base { color: #cfcbc3; }
+    .frase .tinta { position: absolute; inset: 0; color: var(--navy); clip-path: inset(0 100% 0 0); transition: clip-path .12s linear; }
+    .frase .tinta .acc { color: var(--turquesa); }
+    .frase .firma { margin-top: 26px; font-size: .88rem; color: var(--muted); }
+
+    /* ── Proceso ── */
+    .proceso { background: var(--bg); }
+    .pasos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+    .paso { padding: 34px 26px 30px; border-bottom: 1px solid var(--line); position: relative; }
+    @media (min-width: 780px) { .paso + .paso { border-left: 1px solid var(--line); } }
+    .paso .num { font-family: var(--serif); font-style: italic; font-size: 2.4rem; color: var(--turquesa); line-height: 1; display: block; margin-bottom: 16px; }
+    .paso h3 { color: var(--navy); font-size: 1.06rem; font-weight: 800; margin-bottom: 6px; }
+    .paso p { color: var(--muted); font-size: .92rem; }
+
+    /* ── Por qué corredor ── */
+    .porque .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+    .porque .card { background: var(--white); border: 1px solid var(--line); border-left: 3px solid var(--navy); border-radius: 12px; padding: 26px 24px; }
+    .porque .card h3 { color: var(--navy); font-size: 1.02rem; font-weight: 800; margin-bottom: 6px; }
+    .porque .card p { color: var(--muted); font-size: .91rem; }
+
+    /* ── Cotizador guiado ── */
+    .cotiza { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+    .cotiza::before { content: ""; position: absolute; width: 800px; height: 800px; right: -300px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(0,151,178,.16) 0%, transparent 60%); pointer-events: none; }
+    .cotiza .wrap { position: relative; }
+    .cotiza .cab h2 { color: #fff; }
+    .cotiza .cab p { color: rgba(255,255,255,.66); }
+    .cotiza-caja { display: grid; grid-template-columns: 1fr; gap: 0; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.14); border-radius: 18px; overflow: hidden; }
+    @media (min-width: 880px) { .cotiza-caja { grid-template-columns: 7fr 5fr; } }
+    .cotiza-form { padding: 34px 30px; }
+    .bloque { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .bloque:first-child { padding-top: 0; }
+    .bloque:last-child { border-bottom: 0; padding-bottom: 0; }
+    .bloque .tit { font-size: .8rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 14px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 9px; }
+    .chip { border: 1.5px solid rgba(255,255,255,.25); background: transparent; color: #fff; border-radius: 999px; padding: 9px 17px; font: inherit; font-size: .9rem; font-weight: 600; cursor: pointer; transition: background .2s, border-color .2s, color .2s; }
+    .chip:hover { border-color: var(--turquesa); }
+    .chip.on { background: var(--turquesa); border-color: var(--turquesa); color: #fff; }
+    .rango { display: flex; align-items: center; gap: 16px; }
+    .rango input[type=range] { flex: 1; accent-color: var(--turquesa); height: 4px; }
+    .rango .valor { min-width: 118px; text-align: right; font-weight: 800; font-size: 1rem; color: var(--turquesa); }
+    .opciones { display: grid; gap: 10px; }
+    .opcion { display: flex; align-items: center; gap: 11px; cursor: pointer; font-size: .93rem; font-weight: 600; color: rgba(255,255,255,.9); }
+    .opcion input { width: 18px; height: 18px; accent-color: var(--turquesa); }
+    .paso2 { display: none; }
+    .cotiza-caja.fase2 .paso1 { display: none; }
+    .cotiza-caja.fase2 .paso2 { display: block; }
+    .campos { display: grid; gap: 14px; }
+    .campos label { display: grid; gap: 6px; font-size: .86rem; font-weight: 700; color: rgba(255,255,255,.85); }
+    .campos input, .campos textarea { padding: 12px 13px; border-radius: 10px; border: 1.5px solid rgba(255,255,255,.22); background: rgba(255,255,255,.06); color: #fff; font: inherit; width: 100%; }
+    .campos input::placeholder { color: rgba(255,255,255,.4); }
+    .campos input:focus, .campos textarea:focus { outline: none; border-color: var(--turquesa); }
+    .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 560px) { .dos { grid-template-columns: 1fr; } }
+    .cta-naranja { background: var(--naranja); color: #fff; border: 0; border-radius: 999px; padding: 14px 28px; font: inherit; font-weight: 800; font-size: .98rem; cursor: pointer; position: relative; transition: transform .18s ease, box-shadow .18s ease; }
+    .cta-naranja:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(221,78,7,.38); }
+    .cta-naranja:active { transform: scale(.97); }
+    .cta-naranja:disabled { opacity: .6; cursor: wait; transform: none; box-shadow: none; }
+    .volver { background: none; border: 0; color: rgba(255,255,255,.6); font: inherit; font-size: .86rem; font-weight: 600; cursor: pointer; padding: 0; margin-right: 16px; }
+    .volver:hover { color: #fff; }
+    .msg { font-weight: 700; min-height: 1.4em; font-size: .93rem; margin-top: 12px; }
+    .msg.ok { color: #7be0a2; }
+    .msg.err { color: #ffb3a0; }
+    .hp { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+    .privacidad { font-size: .78rem; color: rgba(255,255,255,.45); margin-top: 10px; }
+
+    /* Panel resumen */
+    .cotiza-panel { background: rgba(0,0,0,.18); padding: 34px 30px; display: flex; flex-direction: column; justify-content: space-between; border-top: 1px solid rgba(255,255,255,.12); }
+    @media (min-width: 880px) { .cotiza-panel { border-top: 0; border-left: 1px solid rgba(255,255,255,.12); } }
+    .cotiza-panel .tit { font-size: .8rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 16px; }
+    #resumen { font-size: 1.22rem; line-height: 1.5; font-weight: 600; }
+    #resumen .acc { color: var(--turquesa); }
+    .comparita { margin-top: 30px; border-top: 1px solid rgba(255,255,255,.12); padding-top: 20px; display: grid; gap: 10px; }
+    .comparita .fila { display: flex; justify-content: space-between; gap: 12px; font-size: .87rem; }
+    .comparita .fila span:first-child { color: rgba(255,255,255,.6); }
+    .comparita .fila b { color: #fff; font-weight: 700; white-space: nowrap; }
+    .comparita .nota { font-size: .78rem; color: rgba(255,255,255,.45); margin-top: 4px; }
+
+    /* ── Compañías ── */
+    .companias { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .comp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .comp { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 26px 20px 22px; text-align: center; transition: background .25s ease; text-decoration: none; display: block; }
+    .comp:hover { background: var(--bg); }
+    .comp .lg { height: 54px; display: grid; place-items: center; margin-bottom: 14px; }
+    .comp .lg img { max-height: 54px; max-width: 160px; object-fit: contain; }
+    .comp .nom { display: block; font-weight: 800; color: var(--navy); font-size: .95rem; letter-spacing: .01em; }
+    .comp .tipo { display: block; font-size: .72rem; color: var(--muted); margin-top: 3px; letter-spacing: .06em; text-transform: uppercase; }
+    .comp .visitar { display: block; font-size: .78rem; font-weight: 700; color: var(--turquesa); margin-top: 8px; opacity: 0; transition: opacity .2s; }
+    .comp:hover .visitar { opacity: 1; }
+    .comp-nota { font-size: .82rem; color: var(--muted); margin-top: 18px; }
+
+    /* ── RCV al instante ──
+       Paleta de C.A. Seguros La Internacional (uso autorizado del logo y QR
+       personalizado del intermediario): dorado #FCC900/#F7B02B, azul #252F63. */
+    .rcv { background: var(--bg); }
+    .rcv-caja { display: grid; grid-template-columns: 1fr; gap: 0; background: var(--white); border: 1px solid var(--line); border-top: 4px solid #FCC900; border-radius: 18px; overflow: hidden; }
+    @media (min-width: 820px) { .rcv-caja { grid-template-columns: 7fr 5fr; } }
+    .rcv-info { padding: 38px 34px; }
+    .rcv-info .lis { color: #252F63; }
+    .rcv-info .eti-lis { color: #b8860b; }
+    .rcv-info .paso-mini { display: flex; gap: 12px; align-items: baseline; margin-top: 14px; }
+    .rcv-info .paso-mini .n { font-family: var(--serif); font-style: italic; color: var(--turquesa); font-size: 1.2rem; flex: none; }
+    .rcv-info .paso-mini p { color: var(--muted); font-size: .93rem; }
+    .rcv-info h3 { color: var(--navy); font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -.01em; }
+    .rcv-info .sub { color: var(--muted); font-size: .98rem; }
+    .rcv-info .btn-rcv { display: inline-flex; align-items: center; gap: 9px; margin-top: 24px; background: linear-gradient(180deg, #F7B02B 0%, #FCC900 100%); color: #252F63; text-decoration: none; font-weight: 800; padding: 14px 26px; border-radius: 999px; font-size: .95rem; transition: transform .18s ease, box-shadow .18s ease; }
+    .rcv-info .btn-rcv:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(247,176,43,.45); }
+    .rcv-info .legal { font-size: .78rem; color: var(--muted); margin-top: 16px; }
+    .rcv-qr { background: #fff; display: none; place-items: center; padding: 34px; text-align: center; border-top: 1px solid var(--line); }
+    @media (min-width: 820px) { .rcv-qr { display: grid; border-top: 0; border-left: 1px solid var(--line); } }
+    .rcv-qr .logo-lis { width: 200px; height: auto; display: block; margin: 0 auto 14px; }
+    .rcv-qr img.qr { width: 180px; height: 180px; border-radius: 12px; border: 3px solid #FCC900; padding: 8px; background: #fff; }
+    .rcv-qr p { color: var(--muted); font-size: .84rem; margin-top: 12px; max-width: 24ch; margin-left: auto; margin-right: auto; }
+
+    /* ── Noticias ── */
+    .noticias { background: var(--white); border-top: 1px solid var(--line); }
+    .noti-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .noti { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 24px 22px; display: flex; flex-direction: column; gap: 12px; transition: transform .25s ease, box-shadow .25s ease; }
+    .noti:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(30,51,93,.09); }
+    .noti .meta { display: flex; align-items: center; gap: 10px; font-size: .76rem; }
+    .noti .fuente { background: var(--navy); color: #fff; border-radius: 999px; padding: 3px 11px; font-weight: 700; letter-spacing: .04em; }
+    .noti .fecha { color: var(--muted); font-weight: 600; }
+    .noti h3 { font-size: 1.02rem; line-height: 1.4; font-weight: 800; }
+    .noti h3 a { color: var(--navy); text-decoration: none; }
+    .noti h3 a:hover { color: var(--turquesa); }
+    .noti .leer { margin-top: auto; font-size: .85rem; font-weight: 700; color: var(--turquesa); text-decoration: none; }
+    .noti .leer:hover { color: var(--naranja); }
+    .noti.destacada { border-color: var(--turquesa); border-width: 1.5px; background: linear-gradient(180deg, #f0fafc 0%, var(--bg) 100%); }
+    .noti.destacada .fuente { background: linear-gradient(90deg, #f09433, #dc2743 55%, #bc1888); }
+    .noti-mas { margin-top: 22px; font-size: .88rem; color: var(--muted); }
+    .noti-mas a { color: var(--turquesa); font-weight: 700; text-decoration: none; }
+
+    /* ── Contacto ── */
+    .contacto .tarjetas { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .contacto .t { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; }
+    .contacto .t h3 { color: var(--navy); font-size: .95rem; font-weight: 800; margin-bottom: 4px; }
+    .contacto .t a { color: var(--turquesa); font-weight: 800; text-decoration: none; font-size: 1.02rem; }
+    .contacto .t p { color: var(--muted); font-size: .92rem; }
+
+    footer { background: var(--navy-deep); color: rgba(255,255,255,.7); font-size: .83rem; padding: 26px 0 30px; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; }
+    .redes-footer { display: flex; gap: 12px; width: 100%; justify-content: center; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.12); }
+    .redes-footer a { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.25); color: rgba(255,255,255,.85); transition: border-color .2s, color .2s, transform .2s; }
+    .redes-footer a:hover { border-color: var(--turquesa); color: var(--turquesa); transform: translateY(-2px); }
+    .redes-footer svg { width: 18px; height: 18px; }
+
+    .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 60; background: var(--wa); color: #fff; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; text-decoration: none; box-shadow: 0 8px 24px rgba(37,211,102,.4); transition: transform .15s ease; }
+    .wa-float:hover { transform: scale(1.07); }
+    .wa-float svg { width: 28px; height: 28px; }
+
+    @media (max-width: 1000px) {
+      .nav-links { display: none; }
+    }
+    @media (max-width: 780px) {
+      .brand .logo-rg { height: 44px; }
+      .hero { padding: 72px 0 84px; }
+      section { padding: 64px 0; }
+      .datos .fila { grid-template-columns: 1fr 1fr; }
+      .datos .item:nth-child(3)::before { display: none; }
+      .cotiza-form, .cotiza-panel { padding: 26px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="#" aria-label="Asegurados — Ricardo García, Corredor de Seguros">
+      <img class="logo-rg" src="logo-rg.png" alt="RG — Ricardo García, Corredor de la Actividad Aseguradora CAA-002008">
+    </a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#ramos">Ramos</a>
+      <a href="#companias">Compañías</a>
+      <a href="#rcv">RCV al instante</a>
+      <a href="#cotizar">Cotizar</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="der">
+      <a class="acceso" href="https://app.aseguradosve.com">Acceder</a>
+      <a class="wa-mini" href="https://wa.me/584128499103?text=Hola%2C%20quiero%20cotizar%20un%20seguro" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="fondo" aria-hidden="true">
+    <div class="g1"></div><div class="g2"></div>
+    <svg viewBox="0 0 600 400" fill="none" stroke="#ffffff" stroke-width="1">
+      <path d="M300 40 L480 110 V220 C480 310 400 360 300 385 C200 360 120 310 120 220 V110 Z"/>
+      <path d="M300 80 L440 135 V220 C440 288 378 328 300 350 C222 328 160 288 160 220 V135 Z" opacity=".6"/>
+      <path d="M300 122 L400 160 V219 C400 267 356 296 300 313 C244 296 200 267 200 219 V160 Z" opacity=".35"/>
+    </svg>
+  </div>
+  <div class="wrap trio">
+    <div class="hero-foto fr d2" data-depth="7">
+      <a href="https://www.linkedin.com/in/ricardogarcia-corredordeseguros" target="_blank" rel="noopener" title="Sígueme en LinkedIn" aria-label="Perfil de Ricardo García en LinkedIn">
+        <figure class="foto-fusion">
+          <img src="foto-ricardo-recorte.png" alt="Ricardo García, Corredor de la Actividad Aseguradora" width="562" height="1000">
+          <figcaption class="placa"><b>Ricardo García</b><span>Corredor Sudeaseg · CAA-002008 · in/LinkedIn</span></figcaption>
+        </figure>
+      </a>
+    </div>
+    <div class="contenido">
+    <h1 class="words" id="titular">Protege lo que <em class="acc">más quieres,</em> con alguien que da la cara.</h1>
+    <p class="sub fr d2">Comparo por ti entre las principales aseguradoras de Venezuela y te acompaño
+    desde la cotización hasta el día del siniestro. Trato directo, sin call center.</p>
+    <p class="lic fr d3">Ricardo García · Corredor de la Actividad Aseguradora · Barcelona, Anzoátegui — atención en todo el país</p>
+    <div class="acciones fr d4">
+      <a class="btn btn-wa" href="https://wa.me/584128499103?text=Hola%2C%20quiero%20cotizar%20un%20seguro" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5 0-.2 0-.4-.1-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.5 3.9 1.7.7 2.3.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+        Cotiza por WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="#cotizar">Armar mi cotización</a>
+    </div>
+    </div>
+
+    <div class="hero-visual fr d3" id="collage" aria-hidden="true">
+      <div class="capa" style="top:1%;left:0" data-depth="26"><span class="chip-ramo flota" style="animation-delay:0s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 30l3-10c.6-2 2.4-3 4.4-3h17.2c2 0 3.8 1 4.4 3l3 10"/><rect x="6" y="30" width="36" height="8" rx="2"/><circle cx="14" cy="38" r="3"/><circle cx="34" cy="38" r="3"/></svg>Automóvil</span></div>
+      <div class="capa" style="top:15%;right:0" data-depth="42"><span class="chip-ramo flota" style="animation-delay:-1.6s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="12" width="32" height="28" rx="3"/><path d="M24 20v12M18 26h12M16 12V8h16v4"/></svg>Salud (HCM)</span></div>
+      <div class="capa" style="top:40%;left:1%" data-depth="16"><span class="chip-ramo naranja flota" style="animation-delay:-3.1s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40s-14-8.35-14-18a8 8 0 0 1 14-5.3A8 8 0 0 1 38 22c0 9.65-14 18-14 18Z"/></svg>Vida</span></div>
+      <div class="capa" style="top:47%;right:6%" data-depth="12"><span class="chip-stat flota" style="animation-delay:-5.2s"><b>6</b><span>compañías<br>aliadas</span></span></div>
+      <div class="capa" style="top:72%;left:14%" data-depth="34"><span class="chip-ramo flota" style="animation-delay:-4.4s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22 24 9l16 13"/><path d="M12 20v18h24V20"/><path d="M20 38V28h8v10"/></svg>Hogar</span></div>
+      <div class="capa" style="bottom:0;right:12%" data-depth="24"><span class="chip-ramo flota" style="animation-delay:-2.3s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30l36-14-8 22-10-6-8 6-2-8Z"/><path d="M42 16 24 32"/></svg>Viajes</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="datos">
+  <div class="wrap fila">
+    <div class="item rv"><div class="num"><span class="acc" data-count="8">0</span> ramos</div><div class="lbl">Auto, Salud, Vida, Hogar y más</div></div>
+    <div class="item rv s1"><div class="num"><span class="acc" data-count="6">0</span> compañías</div><div class="lbl">Con producción activa en el país</div></div>
+    <div class="item rv s2"><div class="num">Sudeaseg</div><div class="lbl">Corredor licenciado CAA-002008</div></div>
+    <div class="item rv s3"><div class="num">Mismo día</div><div class="lbl">Respuesta directa por WhatsApp</div></div>
+  </div>
+</div>
+
+<section id="ramos">
+  <div class="wrap">
+    <div class="cab">
+      <div class="rv"><span class="eti">Ramos</span>
+        <h2>¿Qué puedes asegurar?</h2></div>
+      <p class="rv s1">Trabajo los ramos principales del mercado venezolano, en bolívares y en divisas, para familias y para empresas.</p>
+    </div>
+    <div class="ramos-grid">
+      <a class="ramo rv" href="ramo.html?r=automovil" target="_blank" rel="noopener"><span class="n">01</span><span class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 30l3-10c.6-2 2.4-3 4.4-3h17.2c2 0 3.8 1 4.4 3l3 10"/><rect x="6" y="30" width="36" height="8" rx="2"/><circle cx="14" cy="38" r="3"/><circle cx="34" cy="38" r="3"/></svg></span><h3>Automóvil</h3><p>Cobertura amplia, pérdida total y responsabilidad civil (RCV).</p><span class="ver">Ver coberturas →</span></a>
+      <a class="ramo rv s1" href="ramo.html?r=salud" target="_blank" rel="noopener"><span class="n">02</span><span class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="12" width="32" height="28" rx="3"/><path d="M24 20v12M18 26h12M16 12V8h16v4"/></svg></span><h3>Salud (HCM)</h3><p>Hospitalización, cirugía y maternidad — individual, familiar y colectivo.</p><span class="ver">Ver coberturas →</span></a>
+      <a class="ramo rv s2" href="ramo.html?r=vida" target="_blank" rel="noopener"><span class="n">03</span><span class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40s-14-8.35-14-18a8 8 0 0 1 14-5.3A8 8 0 0 1 38 22c0 9.65-14 18-14 18Z"/></svg></span><h3>Vida</h3><p>Protección para tu familia y respaldo patrimonial.</p><span class="ver">Ver coberturas →</span></a>
+      <a class="ramo rv s3" href="ramo.html?r=hogar" target="_blank" rel="noopener"><span class="n">04</span><span class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22 24 9l16 13"/><path d="M12 20v18h24V20"/><path d="M20 38V28h8v10"/></svg></span><h3>Hogar</h3><p>Incendio, robo y daños a tu vivienda y contenido.</p><span class="ver">Ver coberturas →</span></a>
+      <a class="ramo rv" href="ramo.html?r=funeraria" target="_blank" rel="noopener"><span class="n">05</span><span class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6c-7 7-10 12-10 18a10 10 0 0 0 20 0c0-6-3-11-10-18Z"/><path d="M24 42v-8"/></svg></span><h3>Funeraria</h3><p>Previsión y acompañamiento cuando más se necesita.</p><span class="ver">Ver coberturas →</span></a>
+      <a class="ramo rv s1" href="ramo.html?r=fianzas" target="_blank" rel="noopener"><span class="n">06</span><span class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6h14l8 8v28H14Z"/><path d="M28 6v8h8M20 24h8M20 30h8"/></svg></span><h3>Fianzas</h3><p>Fiel cumplimiento, anticipo y licitaciones para tu empresa.</p><span class="ver">Ver coberturas →</span></a>
+      <a class="ramo rv s2" href="ramo.html?r=embarcaciones" target="_blank" rel="noopener"><span class="n">07</span><span class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34h36l-4 6H10Z"/><path d="M24 30V10l14 20M24 14 12 30"/></svg></span><h3>Embarcaciones</h3><p>Casco, motor y responsabilidad civil náutica.</p><span class="ver">Ver coberturas →</span></a>
+      <a class="ramo rv s3" href="ramo.html?r=viajes" target="_blank" rel="noopener"><span class="n">08</span><span class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30l36-14-8 22-10-6-8 6-2-8Z"/><path d="M42 16 24 32"/></svg></span><h3>Asistencia en viaje</h3><p>Cobertura internacional para tus viajes y los de tu familia.</p><span class="ver">Ver coberturas →</span></a>
+      <a class="ramo rv" href="ramo.html?r=otros" target="_blank" rel="noopener"><span class="n">09</span><span class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><path d="M24 16v16M16 24h16"/></svg></span><h3>Otros riesgos</h3><p>Transporte, RC empresarial, equipos, accidentes personales y más.</p><span class="ver">Ver opciones →</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="frase">
+  <div class="wrap">
+    <div class="texto" id="frase">
+      <div class="base">La prima es la misma con o sin corredor. Mi asesoría <em class="acc">no te cuesta nada extra</em> — y en el siniestro, lo cambia todo.</div>
+      <div class="tinta" id="tinta" aria-hidden="true">La prima es la misma con o sin corredor. Mi asesoría <em class="acc">no te cuesta nada extra</em> — y en el siniestro, lo cambia todo.</div>
+    </div>
+    <p class="firma rv">La comisión del corredor la paga la aseguradora, no tú. Está regulado así por la Sudeaseg.</p>
+  </div>
+</div>
+
+<section class="proceso" id="proceso">
+  <div class="wrap">
+    <div class="cab">
+      <div class="rv"><span class="eti">Proceso</span>
+        <h2>Asegurarte es así de simple</h2></div>
+      <p class="rv s1">Tres pasos, sin letra pequeña y sin compromiso.</p>
+    </div>
+    <div class="pasos">
+      <div class="paso rv"><span class="num">1.</span><h3>Cuéntame qué necesitas</h3><p>Por WhatsApp o con el cotizador de abajo: qué quieres asegurar y para quién.</p></div>
+      <div class="paso rv s1"><span class="num">2.</span><h3>Comparo por ti</h3><p>Cotizo el mismo riesgo en varias aseguradoras y te presento las opciones con sus diferencias reales.</p></div>
+      <div class="paso rv s2"><span class="num">3.</span><h3>Te acompaño siempre</h3><p>Emisión, renovaciones y sobre todo el siniestro: yo gestiono tu reclamo ante la compañía.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="porque">
+  <div class="wrap">
+    <div class="cab">
+      <div class="rv"><span class="eti">La diferencia</span>
+        <h2>¿Por qué con un corredor?</h2></div>
+      <p class="rv s1">Un corredor licenciado trabaja para ti, no para una sola compañía.</p>
+    </div>
+    <div class="grid">
+      <div class="card rv"><h3>Comparo por ti</h3><p>Varias aseguradoras, un solo interlocutor: tú eliges con la información completa.</p></div>
+      <div class="card rv s1"><h3>Te acompaño siempre</h3><p>Renovaciones, cobranzas y gestión completa de tu reclamo en el momento del siniestro.</p></div>
+      <div class="card rv s2"><h3>Respaldo legal</h3><p>Actividad regulada y supervisada por la Sudeaseg. Tu póliza siempre se emite directamente con la aseguradora.</p></div>
+      <div class="card rv s3"><h3>Atención directa</h3><p>Hablas conmigo, no con un call center: respuesta por WhatsApp el mismo día.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="companias" id="companias">
+  <div class="wrap">
+    <div class="cab">
+      <div class="rv"><span class="eti">Respaldo</span>
+        <h2>Compañías con las que trabajo</h2></div>
+      <p class="rv s1">Tu póliza siempre se emite directamente con la compañía. Yo te ayudo a elegir la correcta y te represento ante ella.</p>
+    </div>
+    <div class="comp-grid rv">
+      <a class="comp" href="https://www.seguroscaracas.com" target="_blank" rel="noopener"><span class="lg"><img src="logos/seguros-caracas.webp" alt="Seguros Caracas" loading="lazy"></span><span class="nom">Seguros Caracas</span><span class="tipo">Seguros</span><span class="visitar">Visitar sitio →</span></a>
+      <a class="comp" href="https://la-internacional.com" target="_blank" rel="noopener"><span class="lg"><img src="logos/la-internacional.png" alt="La Internacional de Seguros" loading="lazy"></span><span class="nom">La Internacional de Seguros</span><span class="tipo">Seguros</span><span class="visitar">Visitar sitio →</span></a>
+      <a class="comp" href="https://oceanicadeseguros.com" target="_blank" rel="noopener"><span class="lg"><img src="logos/oceanica.png" alt="Oceánica de Seguros" loading="lazy"></span><span class="nom">Oceánica de Seguros</span><span class="tipo">Seguros</span><span class="visitar">Visitar sitio →</span></a>
+      <a class="comp" href="https://www.estarseguros.com" target="_blank" rel="noopener"><span class="lg"><img src="logos/estarseguros.png" alt="Estarseguros" loading="lazy"></span><span class="nom">Estarseguros</span><span class="tipo">Seguros</span><span class="visitar">Visitar sitio →</span></a>
+      <a class="comp" href="https://www.segurosvenezuela.com" target="_blank" rel="noopener"><span class="lg"><img src="logos/seguros-venezuela.png" alt="Seguros Venezuela" loading="lazy"></span><span class="nom">Seguros Venezuela</span><span class="tipo">Seguros</span><span class="visitar">Visitar sitio →</span></a>
+      <a class="comp" href="https://www.planisaludvenezuela.com" target="_blank" rel="noopener"><span class="lg"><img src="logos/planisalud.svg" alt="Planisalud" loading="lazy"></span><span class="nom">Planisalud</span><span class="tipo">Medicina prepagada</span><span class="visitar">Visitar sitio →</span></a>
+    </div>
+    <p class="comp-nota rv">Compañías con las que mantengo producción activa como intermediario. Marcas propiedad de sus respectivos titulares.</p>
+  </div>
+</section>
+
+<section class="rcv" id="rcv">
+  <div class="wrap">
+    <div class="rcv-caja rv">
+      <div class="rcv-info">
+        <span class="eti eti-lis" style="display:block;margin-bottom:10px">¿Solo necesitas el RCV?</span>
+        <h3>Emite tu RCV al instante <span class="lis">con La Internacional de Seguros</span></h3>
+        <p class="sub">Tu Responsabilidad Civil de Vehículos (carro o moto) en la app oficial de <strong class="lis">C.A. Seguros La Internacional</strong>, directo desde tu teléfono, en minutos y con mi respaldo como tu corredor.</p>
+        <div class="paso-mini"><span class="n">1.</span><p>Entra a la app oficial con el botón (o escanea el código si estás en la computadora).</p></div>
+        <div class="paso-mini"><span class="n">2.</span><p>Ingresa los datos de tu vehículo.</p></div>
+        <div class="paso-mini"><span class="n">3.</span><p>Genera y descarga tu póliza RCV al instante.</p></div>
+        <a class="btn-rcv" href="https://la-internacional.com/cotizador-app/?p_insurance_broker_code=102454&amp;p_code_user=2263&amp;appweb=S" target="_blank" rel="noopener">Emitir mi RCV ahora →</a>
+        <p class="legal">Emisión en la app oficial de C.A. Seguros La Internacional (Sudeaseg N° 100). Intermediario: Ricardo García · Código 102454.</p>
+      </div>
+      <div class="rcv-qr">
+        <div>
+          <img class="logo-lis" src="logo-la-internacional.png" alt="La Internacional de Seguros" loading="lazy" width="200" height="150">
+          <img class="qr" src="qr-rcv-internacional.png" alt="Código QR para emitir tu póliza RCV con La Internacional de Seguros" loading="lazy" width="180" height="180">
+          <p>Escanéalo con la cámara de tu teléfono</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Cotizador guiado → n8n (Workflow 3 "Otros canales") ────────────────────
+     Paso 1 arma la solicitud (ramo, personas, extras) y el panel muestra el
+     resumen en vivo. Paso 2 pide contacto y envía el JSON canónico al webhook
+     de n8n (normalizar→dedup→Kommo). Mientras ENDPOINT esté vacío, cae con
+     gracia a WhatsApp con el texto prearmado — la landing nunca se rompe.
+     No mostramos primas: los precios los dan las aseguradoras al cotizar. -->
+<section class="cotiza" id="cotizar">
+  <div class="wrap">
+    <div class="cab">
+      <div class="rv"><span class="eti" style="color:#f2b28f">Sin compromiso</span>
+        <h2>Arma tu cotización en un minuto</h2></div>
+      <p class="rv s1">Elige lo que necesitas y te respondo hoy mismo con opciones reales de varias aseguradoras.</p>
+    </div>
+    <div class="cotiza-caja rv" id="caja">
+      <div class="cotiza-form">
+        <form id="form-cotizar" novalidate>
+          <div class="paso1">
+            <div class="bloque">
+              <div class="tit">¿Qué quieres asegurar?</div>
+              <div class="chips" id="chips-ramo" role="radiogroup" aria-label="Ramo">
+                <button type="button" class="chip on" data-ramo="Salud (HCM)">Salud (HCM)</button>
+                <button type="button" class="chip" data-ramo="Automóvil">Automóvil</button>
+                <button type="button" class="chip" data-ramo="Vida">Vida</button>
+                <button type="button" class="chip" data-ramo="Hogar">Hogar</button>
+                <button type="button" class="chip" data-ramo="Funeraria">Funeraria</button>
+                <button type="button" class="chip" data-ramo="Fianzas">Fianzas</button>
+                <button type="button" class="chip" data-ramo="Embarcaciones">Embarcaciones</button>
+                <button type="button" class="chip" data-ramo="Asistencia en viaje">Viajes</button>
+              </div>
+            </div>
+            <div class="bloque" id="bloque-personas">
+              <div class="tit">¿Para cuántas personas?</div>
+              <div class="rango">
+                <input type="range" id="personas" min="1" max="10" value="2" aria-label="Número de personas">
+                <span class="valor" id="personas-txt">2 personas</span>
+              </div>
+            </div>
+            <div class="bloque">
+              <div class="tit">Detalles (opcional)</div>
+              <div class="opciones">
+                <label class="opcion"><input type="checkbox" id="op-divisas" checked> Prefiero cobertura en divisas (US$)</label>
+                <label class="opcion"><input type="checkbox" id="op-empresa"> Es para mi empresa o negocio</label>
+                <label class="opcion"><input type="checkbox" id="op-urgente"> Lo necesito pronto (renovación o vencimiento cercano)</label>
+              </div>
+            </div>
+            <div class="bloque">
+              <button type="button" class="cta-naranja" id="btn-paso2">Continuar →</button>
+            </div>
+          </div>
+
+          <div class="paso2">
+            <div class="bloque">
+              <div class="tit">¿A dónde te enviamos las opciones?</div>
+              <div class="campos">
+                <label>Nombre y apellido *
+                  <input type="text" name="nombre" required maxlength="120" autocomplete="name" placeholder="Tu nombre" />
+                </label>
+                <div class="dos">
+                  <label>WhatsApp / Teléfono
+                    <input type="tel" name="telefono" maxlength="20" placeholder="0412-1234567" autocomplete="tel" />
+                  </label>
+                  <label>Correo
+                    <input type="email" name="email" maxlength="120" placeholder="tucorreo@ejemplo.com" autocomplete="email" />
+                  </label>
+                </div>
+                <label>¿Algo más que deba saber?
+                  <textarea name="mensaje" maxlength="600" rows="2" placeholder="Edades, marca del carro, suma deseada…"></textarea>
+                </label>
+              </div>
+              <!-- honeypot anti-bots: humano jamás lo ve ni lo llena -->
+              <label class="hp" aria-hidden="true">No llenar<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+            </div>
+            <div class="bloque" style="display:flex;align-items:center;flex-wrap:wrap;gap:8px">
+              <button type="button" class="volver" id="btn-volver">← Cambiar mi selección</button>
+              <button type="submit" class="cta-naranja" id="btn-enviar">Pedir mi cotización</button>
+              <p class="msg" id="msg-cotizar" role="status"></p>
+            </div>
+            <p class="privacidad">Tus datos solo se usan para preparar tu cotización. Sin spam.</p>
+          </div>
+        </form>
+      </div>
+
+      <aside class="cotiza-panel">
+        <div>
+          <div class="tit">Tu solicitud</div>
+          <p id="resumen"></p>
+        </div>
+        <div class="comparita">
+          <div class="fila"><span>Prima del seguro</span><b>La misma que directo</b></div>
+          <div class="fila"><span>Comparación entre aseguradoras</span><b>Incluida</b></div>
+          <div class="fila"><span>Gestión de tu siniestro</span><b>Incluida</b></div>
+          <div class="fila"><span>Costo de mi asesoría para ti</span><b style="color:#7be0a2">$0</b></div>
+          <p class="nota">La comisión del corredor la paga la aseguradora. Regulado por la Sudeaseg.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="noticias" id="noticias">
+  <div class="wrap">
+    <div class="cab">
+      <div class="rv"><span class="eti">Actualidad</span>
+        <h2>El seguro en Venezuela, al día</h2></div>
+      <p class="rv s1">Lo más relevante del sector para ti y tu familia — de la Sudeaseg y la prensa nacional.</p>
+    </div>
+    <div class="noti-grid" id="noti-grid"></div>
+    <p class="noti-mas rv">Más en las <a href="https://www.sudeaseg.gob.ve/noticias/" target="_blank" rel="noopener">noticias oficiales de la Sudeaseg</a> y en nuestro <a href="https://instagram.com/asegurados_ve" target="_blank" rel="noopener">Instagram @asegurados_ve</a>.</p>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="cab">
+      <div class="rv"><span class="eti">Contacto</span>
+        <h2>Hablemos directo</h2></div>
+      <p class="rv s1">Escríbeme y recibe tu cotización sin compromiso.</p>
+    </div>
+    <div class="tarjetas">
+      <div class="t rv"><h3>WhatsApp Ventas</h3><p><a href="https://wa.me/584128499103" target="_blank" rel="noopener">+58 412-849-9103</a></p></div>
+      <div class="t rv s1"><h3>Redes sociales</h3>
+        <p style="display:grid;gap:6px">
+          <a href="https://instagram.com/asegurados_ve" target="_blank" rel="noopener">Instagram · @asegurados_ve</a>
+          <a href="https://www.facebook.com/profile.php?id=100065852615922" target="_blank" rel="noopener">Facebook · Ricardo García Corredor</a>
+          <a href="https://www.linkedin.com/in/ricardogarcia-corredordeseguros" target="_blank" rel="noopener">LinkedIn · Ricardo García</a>
+        </p>
+      </div>
+      <div class="t rv s2"><h3>Ubicación</h3><p>Barcelona, Estado Anzoátegui, Venezuela<br>Atención en todo el país</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="redes-footer">
+      <a href="https://instagram.com/asegurados_ve" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram @asegurados_ve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.facebook.com/profile.php?id=100065852615922" target="_blank" rel="noopener" aria-label="Facebook" title="Fanpage de Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H8.5v3H11v7Z"/></svg></a>
+      <a href="https://www.linkedin.com/in/ricardogarcia-corredordeseguros" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn de Ricardo García"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.8H3.6V20h2.9ZM5 7.6a1.7 1.7 0 1 0 0-3.4 1.7 1.7 0 0 0 0 3.4ZM20.4 13.9c0-3.2-1.7-4.7-4-4.7a3.5 3.5 0 0 0-3.1 1.7V8.8H10.4V20h2.9v-5.9c0-1.6.8-2.5 2-2.5s1.8.9 1.8 2.5V20h3.3Z"/></svg></a>
+      <a href="https://wa.me/584128499103" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp Ventas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5 0-.2 0-.4-.1-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.5 3.9 1.7.7 2.3.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></a>
+    </div>
+    <span><strong>RICARDO ANTONIO GARCIA BLANCO</strong> · RIF V167979897 · Corredor de la Actividad Aseguradora · Sudeaseg CAA-002008</span>
+    <span>© 2026 Asegurados. Todos los derechos reservados.</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/584128499103?text=Hola%2C%20quiero%20cotizar%20un%20seguro" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5 0-.2 0-.4-.1-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.5 3.9 1.7.7 2.3.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+</a>
+
+<script>
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Header: sombra al hacer scroll */
+  var topbar = document.getElementById('topbar');
+  addEventListener('scroll', function () {
+    topbar.classList.toggle('scrolled', scrollY > 8);
+  }, { passive: true });
+
+  /* Titular: revelado palabra por palabra (sin librerías) */
+  var h1 = document.getElementById('titular');
+  if (!reduce) {
+    var partes = [];
+    h1.childNodes.forEach(function (n) {
+      if (n.nodeType === 3) {
+        n.textContent.split(/(\s+)/).forEach(function (t) {
+          if (!t) return;
+          if (/^\s+$/.test(t)) { partes.push(document.createTextNode(' ')); return; }
+          var s = document.createElement('span'); s.className = 'w'; s.textContent = t; partes.push(s);
+        });
+      } else if (n.nodeType === 1) {
+        var claseOrig = n.className;
+        n.textContent.split(/(\s+)/).forEach(function (t) {
+          if (!t) return;
+          if (/^\s+$/.test(t)) { partes.push(document.createTextNode(' ')); return; }
+          var e = document.createElement('em'); e.className = claseOrig;
+          var s = document.createElement('span'); s.className = 'w'; s.textContent = t;
+          e.appendChild(s); partes.push(e);
+        });
+      }
+    });
+    h1.textContent = '';
+    partes.forEach(function (p) { h1.appendChild(p); });
+    var ws = h1.querySelectorAll('.w');
+    ws.forEach(function (w, i) { w.style.transitionDelay = (0.12 + i * 0.07) + 's'; });
+    setTimeout(function () { h1.classList.add('in'); }, 60);
+  } else {
+    h1.classList.add('in');
+  }
+
+  /* Parallax del hero: la foto y los chips de ramos siguen al mouse con
+     profundidades distintas. Solo con puntero fino y sin reduced-motion. */
+  var heroEl = document.querySelector('.hero');
+  var capas = document.querySelectorAll('.capa, .hero-foto');
+  if (heroEl && capas.length && !reduce && matchMedia('(pointer: fine)').matches) {
+    var objetivo = { x: 0, y: 0 }, actual = { x: 0, y: 0 }, animando = false;
+    heroEl.addEventListener('mousemove', function (e) {
+      var r = heroEl.getBoundingClientRect();
+      objetivo.x = (e.clientX - r.left) / r.width - 0.5;
+      objetivo.y = (e.clientY - r.top) / r.height - 0.5;
+      if (!animando) { animando = true; requestAnimationFrame(pasoParallax); }
+    });
+    heroEl.addEventListener('mouseleave', function () { objetivo.x = 0; objetivo.y = 0; });
+    function pasoParallax() {
+      actual.x += (objetivo.x - actual.x) * 0.08;
+      actual.y += (objetivo.y - actual.y) * 0.08;
+      capas.forEach(function (c) {
+        var d = parseFloat(c.getAttribute('data-depth') || 0);
+        if (!d) return;
+        c.style.transform = 'translate3d(' + (actual.x * d).toFixed(2) + 'px,' + (actual.y * d * 0.7).toFixed(2) + 'px,0)';
+      });
+      if (Math.abs(objetivo.x - actual.x) + Math.abs(objetivo.y - actual.y) > 0.001) {
+        requestAnimationFrame(pasoParallax);
+      } else { animando = false; }
+    }
+  }
+
+  /* Aparición de secciones al hacer scroll */
+  var io = new IntersectionObserver(function (entradas) {
+    entradas.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+
+  /* Contador (solo el 8 de ramos) */
+  var counters = document.querySelectorAll('[data-count]');
+  var ioC = new IntersectionObserver(function (entradas) {
+    entradas.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      ioC.unobserve(e.target);
+      var fin = parseInt(e.target.getAttribute('data-count'), 10);
+      if (reduce) { e.target.textContent = fin; return; }
+      var t0 = null;
+      function paso(t) {
+        if (!t0) t0 = t;
+        var p = Math.min((t - t0) / 1200, 1);
+        e.target.textContent = Math.round((1 - Math.pow(1 - p, 3)) * fin);
+        if (p < 1) requestAnimationFrame(paso);
+      }
+      requestAnimationFrame(paso);
+    });
+  }, { threshold: 0.6 });
+  counters.forEach(function (c) { ioC.observe(c); });
+
+  /* Frase que se pinta con el scroll */
+  var frase = document.getElementById('frase');
+  var tinta = document.getElementById('tinta');
+  if (frase && tinta && !reduce) {
+    addEventListener('scroll', function () {
+      var r = frase.getBoundingClientRect();
+      var vh = innerHeight;
+      var fill = Math.min(Math.max((vh * 0.85 - r.top) / (vh * 0.6), 0), 1) * 100;
+      tinta.style.clipPath = 'inset(0 ' + (100 - fill) + '% 0 0)';
+    }, { passive: true });
+  } else if (tinta) {
+    tinta.style.clipPath = 'inset(0 0 0 0)';
+  }
+
+  /* ── Noticias ──
+     Para actualizar: edita este arreglo (más nuevas primero) y redespliega.
+     Cuando el webhook de n8n esté en línea, un flujo puede regenerar este
+     bloque automáticamente desde la Sudeaseg/prensa. */
+  var NOTICIAS = [
+    {
+      fuente: 'Instagram', fecha: 'cada día',
+      titulo: 'Historias de hoy: tips, avisos y actualidad del seguro en @asegurados_ve',
+      url: 'https://www.instagram.com/stories/asegurados_ve/',
+      destacada: true
+    },
+    {
+      fuente: 'El Diario', fecha: '11 ago 2026',
+      titulo: 'Tras los sismos, la falta de seguros en condominios deja a miles de familias sin respaldo',
+      url: 'https://eldiario.com/2026/08/11/falta-seguros-condominios-impacto-sismos-venezuela/'
+    },
+    {
+      fuente: 'Últimas Noticias', fecha: 'ago 2026',
+      titulo: 'Sudeaseg abre registro para que empresas de seguros operen como canales alternativos bancarios',
+      url: 'https://ultimasnoticias.com.ve/economia/sudeaseg-abre-registro-para-que-cooperativas-y-empresas-de-seguros-operen-como-canales-alternativos-bancarios/'
+    },
+    {
+      fuente: 'Sudeaseg', fecha: 'ago 2026',
+      titulo: 'La Sudeaseg moderniza la supervisión del sector con el nuevo sistema SEFA',
+      url: 'https://www.sudeaseg.gob.ve/sudeaseg-impulsa-avance-tecnologico-del-sector-asegurador-con-sistema-de-estados-financieros-analiticos/'
+    }
+  ];
+  var grid = document.getElementById('noti-grid');
+  NOTICIAS.forEach(function (n, i) {
+    var art = document.createElement('article');
+    art.className = 'noti rv' + (i ? ' s' + Math.min(i, 3) : '') + (n.destacada ? ' destacada' : '');
+    art.innerHTML =
+      '<div class="meta"><span class="fuente"></span><span class="fecha"></span></div>' +
+      '<h3><a target="_blank" rel="noopener"></a></h3>' +
+      '<a class="leer" target="_blank" rel="noopener">' + (n.destacada ? 'Ver historias →' : 'Leer la nota →') + '</a>';
+    art.querySelector('.fuente').textContent = n.fuente;
+    art.querySelector('.fecha').textContent = n.fecha;
+    var enlace = art.querySelector('h3 a');
+    enlace.textContent = n.titulo; enlace.href = n.url;
+    art.querySelector('.leer').href = n.url;
+    grid.appendChild(art);
+    io.observe(art);
+  });
+
+  /* ── Cotizador guiado ── */
+  // Webhook del WF3 de n8n (Otros canales). VACÍO hasta exponer n8n por el
+  // Cloudflare Tunnel; p. ej.: 'https://n8n.aseguradosve.com/webhook/otros-canales-ingesta'
+  var ENDPOINT = '';
+  var WA = 'https://wa.me/584128499103';
+
+  var estado = { ramo: 'Salud (HCM)', personas: 2, divisas: true, empresa: false, urgente: false };
+  var caja = document.getElementById('caja');
+  var chips = document.querySelectorAll('#chips-ramo .chip');
+  var rango = document.getElementById('personas');
+  var rangoTxt = document.getElementById('personas-txt');
+  var bloquePersonas = document.getElementById('bloque-personas');
+  var resumen = document.getElementById('resumen');
+  var form = document.getElementById('form-cotizar');
+  var msg = document.getElementById('msg-cotizar');
+  var btnEnviar = document.getElementById('btn-enviar');
+  var conPersonas = ['Salud (HCM)', 'Vida', 'Funeraria', 'Asistencia en viaje'];
+
+  function pintarResumen() {
+    var t = 'Quiero cotizar <span class="acc">' + estado.ramo + '</span>';
+    if (conPersonas.indexOf(estado.ramo) >= 0) t += ' para <span class="acc">' + estado.personas + (estado.personas === 1 ? ' persona' : ' personas') + '</span>';
+    if (estado.empresa) t += ', para mi <span class="acc">empresa</span>';
+    t += estado.divisas ? ', con cobertura en <span class="acc">divisas</span>.' : '.';
+    if (estado.urgente) t += ' Lo necesito <span class="acc">pronto</span>.';
+    resumen.innerHTML = t;
+  }
+  function textoPlano() {
+    var t = 'Hola, quiero cotizar ' + estado.ramo;
+    if (conPersonas.indexOf(estado.ramo) >= 0) t += ' para ' + estado.personas + (estado.personas === 1 ? ' persona' : ' personas');
+    if (estado.empresa) t += ', para mi empresa';
+    t += estado.divisas ? ', con cobertura en divisas' : '';
+    if (estado.urgente) t += '. Lo necesito pronto';
+    return t;
+  }
+
+  chips.forEach(function (ch) {
+    ch.addEventListener('click', function () {
+      chips.forEach(function (c) { c.classList.remove('on'); });
+      ch.classList.add('on');
+      estado.ramo = ch.getAttribute('data-ramo');
+      bloquePersonas.style.display = conPersonas.indexOf(estado.ramo) >= 0 ? '' : 'none';
+      pintarResumen();
+    });
+  });
+  rango.addEventListener('input', function () {
+    estado.personas = parseInt(rango.value, 10);
+    rangoTxt.textContent = estado.personas + (estado.personas === 1 ? ' persona' : ' personas');
+    pintarResumen();
+  });
+  [['op-divisas', 'divisas'], ['op-empresa', 'empresa'], ['op-urgente', 'urgente']].forEach(function (par) {
+    document.getElementById(par[0]).addEventListener('change', function (e) {
+      estado[par[1]] = e.target.checked; pintarResumen();
+    });
+  });
+  document.getElementById('btn-paso2').addEventListener('click', function () {
+    caja.classList.add('fase2');
+    var n = form.querySelector('[name=nombre]');
+    setTimeout(function () { n && n.focus(); }, 120);
+  });
+  document.getElementById('btn-volver').addEventListener('click', function () {
+    caja.classList.remove('fase2');
+  });
+  pintarResumen();
+
+  function aviso(texto, clase) { msg.textContent = texto; msg.className = 'msg ' + (clase || ''); }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var d = new FormData(form);
+    if (d.get('website')) return; // honeypot: bot -> silencio
+    var nombre = (d.get('nombre') || '').trim();
+    var telefono = (d.get('telefono') || '').trim();
+    var email = (d.get('email') || '').trim();
+    var extra = (d.get('mensaje') || '').trim();
+    if (!nombre) return aviso('Escribe tu nombre para poder atenderte.', 'err');
+    if (!telefono && !email) return aviso('Déjanos al menos un WhatsApp o un correo para responderte.', 'err');
+
+    var detalle = textoPlano().replace(/^Hola, quiero cotizar /, '') + (extra ? '. ' + extra : '');
+    var params = new URLSearchParams(location.search);
+    var payload = {
+      nombre: nombre, telefono: telefono || null, email: email || null,
+      mensaje: detalle || null, canal: 'web', origen: 'landing',
+      utm_source: params.get('utm_source') || null,
+      utm_medium: params.get('utm_medium') || null,
+      utm_campaign: params.get('utm_campaign') || null
+    };
+
+    // Sin endpoint todavía -> caída con gracia a WhatsApp con el texto armado.
+    if (!ENDPOINT) {
+      var wtxt = 'Hola, soy ' + nombre + '. Quiero cotizar ' + detalle + (email ? '. Mi correo: ' + email : '');
+      window.open(WA + '?text=' + encodeURIComponent(wtxt), '_blank', 'noopener');
+      aviso('Te llevamos a WhatsApp para completar tu cotización 👌', 'ok');
+      return;
+    }
+
+    btnEnviar.disabled = true; aviso('Enviando…');
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { s: r.status, j: j }; }); })
+      .then(function (res) {
+        if (res.s === 200 && res.j && res.j.ok !== false) {
+          form.reset();
+          aviso('¡Recibido! Te contacto hoy mismo con tus opciones. 🎉', 'ok');
+        } else if (res.s === 400) {
+          aviso('Revisa tus datos e inténtalo de nuevo.', 'err');
+        } else {
+          aviso('No pudimos procesarlo ahora — escríbenos directo por WhatsApp y te atendemos ya.', 'err');
+        }
+      })
+      .catch(function () { aviso('Sin conexión — inténtalo de nuevo o escríbenos por WhatsApp.', 'err'); })
+      .then(function () { btnEnviar.disabled = false; });
+  });
+})();
+</script>
+
+</body>
+</html>
